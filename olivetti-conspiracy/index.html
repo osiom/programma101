@@ -3,610 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Image</title>
-    <style>
-        /* Base styles for the one-page layout */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-y: auto; /* Enable vertical scrolling */
-            font-family: sans-serif;
-            position: relative;
-            scroll-behavior: smooth; /* Smooth scrolling between sections */
-        }
-        
-        /* The container for centered content */
-        .container {
-            position: fixed; /* Changed from absolute to fixed to always stay in center */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1; /* Above the background */
-        }
-
-        .background-svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Put it behind everything as in example */
-            background-color: white;
-        }
-        
-        .image-container {
-            border: 4px solid #333333;
-            padding: 8px;
-            background-color: #F5F5EB; /* Very light cream color for vintage feel */
-            max-width: 390px; /* Increased by 50% from 260px */
-        }
-
-        .image-container img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* NEW STYLES for animated elements */
-        .animated-element {
-            position: fixed;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-            pointer-events: none;
-            z-index: 2; /* Above the fixed content (z-index: 1) and background (z-index: 0) */
-        }
-
-        .circles {
-            display: flex;
-            gap: 20px; /* Wider gap between circles */
-            top: 15%;
-            left: 5%;
-        }
-
-        .circle {
-            width: 70px;
-            height: 70px;
-            border: 10px solid #E8702A; /* Vintage Olivetti orange */
-            border-radius: 50%;
-            transition: transform 0.6s ease-out;
-        }
-
-        .vector {
-            top: 40%;
-            right: 5%;
-            width: 300px; /* Longer vector */
-            height: 12px; /* Thicker vector */
-            background-color: #165C7D; /* Vintage Olivetti blue */
-            transform: translateX(100%);
-            transition: transform 1s ease-out;
-        }
-
-        .cube {
-            width: 100px;
-            height: 100px;
-            background-color: #175442; /* Vintage Olivetti green */
-            top: 60%;
-            left: 20%;
-            transform: rotateY(0deg) scale(0);
-            transition: transform 1s ease-out;
-        }
-        
-        .yellow-lines {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Wider gap between lines */
-            bottom: 5%;
-            right: 25%;
-        }
-
-        .yellow-line {
-            width: 200px; /* Longer lines */
-            height: 8px; /* Thicker lines */
-            background-color: #cbc021; /* Vintage yellow */
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.8s ease-out;
-        }
-
-        /* Classes to trigger animations */
-        .circles.is-visible {
-            opacity: 1;
-        }
-        .circles.is-visible .circle:nth-child(1) { transform: translateY(0); }
-        .circles.is-visible .circle:nth-child(2) { transform: translateY(-20px); }
-        .circles.is-visible .circle:nth-child(3) { transform: translateY(20px); }
-        .circles.is-visible .circle:nth-child(4) { transform: translateY(0); }
-
-        .vector.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .cube.is-visible {
-            opacity: 1;
-            transform: rotateY(360deg) scale(1);
-        }
-
-        .yellow-lines.is-visible .yellow-line {
-            transform: scaleX(1);
-        }
-        
-        /* Giovanni Pintori inspired design element - vertical yellow lines */
-        .pintori-element {
-            position: fixed;
-            top: 0;
-            right: 25%;
-            width: 140px; /* Width for both lines and space between */
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            pointer-events: none;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .vertical-line {
-            width: 15px;
-            height: 0%;
-            background-color: #cbc021; /* Vintage yellow */
-            transform-origin: top;
-            transition: height 1.2s ease-out;
-        }
-        
-        .pintori-element.is-visible {
-            opacity: 1;
-        }
-        
-        .pintori-element.is-visible .vertical-line {
-            height: 100%;
-        }
-        
-        /* First line animates slightly faster */
-        .vertical-line:first-child {
-            transition-delay: 0s;
-        }
-        
-        /* Second line animates with a slight delay */
-        .vertical-line:last-child {
-            transition-delay: 0.3s;
-        }
-        
-        /* Triangle section has been removed as requested */
-        
-        /* Squares with enhanced colors and effects */
-        .squares {
-            position: fixed;
-            bottom: 15%;
-            left: 8%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .squares.is-visible {
-            opacity: 1;
-        }
-        
-        .square {
-            width: 45px;
-            height: 45px;
-            background-color: #5B7B9A; /* Vintage muted blue */
-            position: absolute;
-            transform: scale(0) rotate(45deg);
-            transition: transform 0.8s ease-out;
-        }
-        
-        .squares .square:nth-child(1) {
-            top: 0;
-            left: 0;
-            transition-delay: 0s;
-        }
-        
-        .squares .square:nth-child(2) {
-            top: 0;
-            left: 55px;
-            transition-delay: 0.1s;
-        }
-        
-        .squares .square:nth-child(3) {
-            top: 55px;
-            left: 0;
-            transition-delay: 0.2s;
-        }
-        
-        .squares .square:nth-child(4) {
-            top: 55px;
-            left: 55px;
-            transition-delay: 0.3s;
-        }
-        
-        .squares.is-visible .square {
-            transform: scale(1) rotate(0);
-        }
-        
-        /* Semicircle with enhanced colors and effects */
-        .semicircle-container {
-            position: fixed;
-            top: 20%;
-            right: 15%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .semicircle-container.is-visible {
-            opacity: 1;
-        }
-        
-        .semicircle {
-            width: 120px;
-            height: 60px;
-            background-color: #5B8A70; /* Vintage muted green */
-            border-top-left-radius: 120px;
-            border-top-right-radius: 120px;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.8s ease-out;
-        }
-
-        /* Styles for content appearing in the same viewport */
-        .scroll-content {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none; /* Allow clicking through to background elements */
-            z-index: 3;
-        }
-
-        /* Hidden element to enable scrolling while page stays fixed */
-        .scroll-height {
-            position: absolute;
-            width: 1px;
-            opacity: 0;
-            height: 600vh; /* Height to enable scrolling - adjust based on number of elements */
-        }
-
-        /* Content container styles */
-        .content-container {
-            background-color: white;
-            border: 2px solid #333;
-            padding: 25px;
-            margin: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            max-width: 300px;
-            opacity: 0;
-            position: absolute;
-            transform: scale(0.9);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            text-align: center;
-            pointer-events: auto; /* Make the containers clickable */
-        }
-
-        .content-container.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        /* Position each container in a different area */
-        #container1 {
-            top: 15%;
-            left: 15%;
-        }
-        
-        #container2 {
-            top: 60%;
-            left: 25%;
-        }
-        
-        #container3 {
-            top: 25%;
-            right: 10%;
-        }
-        
-        #container4 {
-            bottom: 20%;
-            right: 20%;
-        }
-        
-        #container5 {
-            top: 40%;
-            left: 40%;
-        }
-        
-        #container6 {
-            bottom: 10%;
-            left: 10%;
-        }
-
-        .content-container h2 {
-            margin-top: 0;
-            color: #333;
-        }
-
-        .content-container p {
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .content-container a {
-            display: inline-block;
-            margin-top: 15px;
-            color: #0066cc;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .content-container a:hover {
-            border-color: #0066cc;
-        }
-
-        .content-container img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
-        /* Logo styles */
-        .logo-container {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #444444;
-            padding: 15px 30px;
-            z-index: 4;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .logo-container img {
-            display: block;
-            height: 50px;
-            width: auto;
-        }
-        
-        /* Diagonal pattern element */
-        .diagonal-pattern {
-            position: fixed;
-            bottom: 20%;
-            right: 10%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .diagonal-pattern.is-visible {
-            opacity: 1;
-        }
-        
-        .diagonal-line {
-            width: 180px;
-            height: 6px;
-            background-color: #B33B3B; /* Vintage muted red */
-            position: absolute;
-            transform: scaleX(0) rotate(-45deg);
-            transform-origin: left;
-            transition: transform 0.6s ease-out;
-        }
-        
-        .diagonal-pattern .diagonal-line:nth-child(1) {
-            top: 0;
-            left: 0;
-            transition-delay: 0s;
-        }
-        
-        .diagonal-pattern .diagonal-line:nth-child(2) {
-            top: 20px;
-            left: 10px;
-            transition-delay: 0.1s;
-        }
-        
-        .diagonal-pattern .diagonal-line:nth-child(3) {
-            top: 40px;
-            left: 20px;
-            transition-delay: 0.2s;
-        }
-        
-        .diagonal-pattern.is-visible .diagonal-line {
-            transform: scaleX(1) rotate(-45deg);
-        }
-    </style>
+    <title>olivetti 📠</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
-
-<div class="logo-container">
-    <a href="https://reincantamento.xyz/homepage" target="_blank">
-        <img src="img/logo.png" alt="REINCANTAMENTO">
-    </a>
-</div>
-
-<svg class="background-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <!-- Background layer -->
+    <div class="background-svg">
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <pattern id="lines" width="40" height="40" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="40" y2="0" stroke="#333333" stroke-width="2"/>
-      <line x1="0" y1="0" x2="40" y2="40" stroke="#333333" stroke-width="2"/>
+    <pattern id="isometricGrid" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+      <!-- Vertical lines -->
+      <line x1="30" y1="0" x2="30" y2="52" stroke="#e0e0e0" stroke-width="0.5" opacity="0.6"/>
+      
+      <!-- Diagonal lines (left to right, bottom to up) matching cube perspective -->
+      <line x1="0" y1="39" x2="60" y2="13" stroke="#e0e0e0" stroke-width="0.5" opacity="0.6"/>
+      <line x1="0" y1="13" x2="60" y2="-13" stroke="#e0e0e0" stroke-width="0.5" opacity="0.6"/>
+      <line x1="0" y1="65" x2="60" y2="39" stroke="#e0e0e0" stroke-width="0.5" opacity="0.6"/>
     </pattern>
   </defs>
-  <rect width="100%" height="100%" fill="url(#lines)"/>
+  
+  <rect width="100%" height="100%" fill="url(#isometricGrid)"/>
 </svg>
-
-<div class="container">
-    <div class="image-container">
-        <img src="img/olivetti.png" alt="Olivetti Typewriter">
-    </div>
-</div>
-
-<div class="circles animated-element">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-</div>
-
-<div class="vector animated-element"></div>
-
-<div class="cube animated-element"></div>
-
-<div class="yellow-lines animated-element">
-    <div class="yellow-line"></div>
-    <div class="yellow-line"></div>
-    <div class="yellow-line"></div>
-    <div class="yellow-line"></div>
-</div>
-
-<div class="pintori-element animated-element">
-    <div class="vertical-line"></div>
-    <div class="vertical-line"></div>
-</div>
-
-<!-- Triangles have been removed as requested -->
-
-<div class="squares geometric-elements animated-element">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-</div>
-
-<div class="semicircle-container geometric-elements animated-element">
-    <div class="semicircle"></div>
-</div>
-
-<div class="diagonal-pattern animated-element">
-    <div class="diagonal-line"></div>
-    <div class="diagonal-line"></div>
-    <div class="diagonal-line"></div>
-</div>
-
-<!-- Content containers that appear in the same viewport -->
-<div class="scroll-content">
-    <div class="content-container" id="container1">
-        <img src="images/placeholder1.jpg" alt="Content Image 1">
-        <h2>Title 1</h2>
-        <p>This is the first content container that appears as you scroll.</p>
-        <a href="https://example.com/1">Learn More</a>
     </div>
 
-    <div class="content-container" id="container2">
-        <h2>Title 2</h2>
-        <p>Another container with text content and a link.</p>
-        <a href="https://example.com/2">Visit Website</a>
+    <!-- RSS Feed overlay - middle layer   -->
+    <div class="rss-feed-container">
+        <iframe src="poster.html" class="rss-feed-iframe"></iframe>
     </div>
-
-    <div class="content-container" id="container3">
-        <img src="images/placeholder2.jpg" alt="Content Image 2">
-        <h2>Title 3</h2>
-        <p>Third container with image and text content.</p>
-        <a href="https://example.com/3">Details</a>
-    </div>
-
-    <div class="content-container" id="container4">
-        <h2>Title 4</h2>
-        <p>Fourth content container appearing on scroll.</p>
-        <a href="https://example.com/4">More Info</a>
-    </div>
-
-    <div class="content-container" id="container5">
-        <img src="images/placeholder3.jpg" alt="Content Image 3">
-        <h2>Title 5</h2>
-        <p>Fifth content container with image and text.</p>
-        <a href="https://example.com/5">Explore</a>
-    </div>
-
-    <div class="content-container" id="container6">
-        <h2>Title 6</h2>
-        <p>Final content container appearing on the page.</p>
-        <a href="https://example.com/6">Contact</a>
-    </div>
-</div>
-
-<!-- Hidden element to create scrollable height -->
-<div class="scroll-height"></div>
-
-<script>
-    const animatedElements = document.querySelectorAll('.animated-element');
-    const contentContainers = document.querySelectorAll('.content-container');
     
-    // Remove initial auto-trigger animations - will control with scroll instead
-
-    // Set the body height to enable scrolling
-    document.body.style.height = '600vh';
-    
-    // Calculate scroll thresholds for containers and animated elements
-    const scrollTriggers = [
-        { scrollPercent: 0.1, element: document.getElementById('container1') },
-        { scrollPercent: 0.2, element: document.getElementById('container2') },
-        { scrollPercent: 0.3, element: document.getElementById('container3') },
-        { scrollPercent: 0.5, element: document.getElementById('container4') },
-        { scrollPercent: 0.7, element: document.getElementById('container5') },
-        { scrollPercent: 0.85, element: document.getElementById('container6') }
-    ];
-
-    const animatedTriggers = [
-        { scrollPercent: 0.05, element: document.querySelector('.circles') },
-        { scrollPercent: 0.15, element: document.querySelector('.vector') },
-        { scrollPercent: 0.25, element: document.querySelector('.cube') },
-        { scrollPercent: 0.35, element: document.querySelector('.yellow-lines') },
-        { scrollPercent: 0.45, element: document.querySelector('.pintori-element') },
-        { scrollPercent: 0.60, element: document.querySelector('.squares') },
-        { scrollPercent: 0.75, element: document.querySelector('.semicircle-container') },
-        { scrollPercent: 0.85, element: document.querySelector('.diagonal-pattern') }
-    ];
-    
-    let lastScrollPosition = 0;
-    
-    // Function to handle scroll events
-    function handleScroll() {
-        // Calculate scroll percentage
-        const scrollTop = window.scrollY;
-        const docHeight = document.body.offsetHeight;
-        const winHeight = window.innerHeight;
-        const scrollPercent = scrollTop / (docHeight - winHeight);
+    <!-- First Draggable Pintori-style frame - Mario Tchou -->
+    <div class="pintori-frame frame-1" id="pintoriFrame1">
+        <!-- Vintage corner decorations -->
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner bottom-right"></div>
         
-        // Detect scroll direction
-        const scrollingDown = scrollTop > lastScrollPosition;
-        lastScrollPosition = scrollTop;
+        <!-- Frame header -->
+        <div class="frame-header mario-tchou">
+            <div class="geometric-element"></div>
+            <div class="frame-title">Mario Tchou</div>
+            <div class="frame-year">1960</div>
+        </div>
         
-        // Show or hide content containers based on scroll direction and position
-        scrollTriggers.forEach(trigger => {
-            if (scrollingDown && scrollPercent >= trigger.scrollPercent) {
-                // When scrolling down, show the container
-                trigger.element.classList.add('visible');
-            } else if (!scrollingDown) {
-                // When scrolling up, hide the container
-                trigger.element.classList.remove('visible');
-            }
-        });
+        <!-- Image area -->
+        <div class="frame-image-area">
+            <img src="img/mariotchou.jpg" alt="Mario Tchou">
+        </div>
+    </div>
+
+    <!-- Second Draggable Pintori-style frame - Lettera 22 -->
+    <div class="pintori-frame frame-2" id="pintoriFrame2">
+        <!-- Vintage corner decorations -->
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner bottom-right"></div>
         
-        // Show or hide animated elements based on scroll direction and position
-        animatedTriggers.forEach(trigger => {
-            if (scrollingDown && scrollPercent >= trigger.scrollPercent) {
-                // When scrolling down, show the element
-                trigger.element.classList.add('is-visible');
-            } else if (!scrollingDown) {
-                // When scrolling up, hide the element
-                trigger.element.classList.remove('is-visible');
-            }
-        });
-    }
+        <!-- Frame header -->
+        <div class="frame-header lettera22">
+            <div class="geometric-element"></div>
+            <div class="frame-title">Lettera 22</div>
+            <div class="frame-year">1950</div>
+        </div>
+        
+        <!-- Image area -->
+        <div class="frame-image-area">
+            <img src="img/lettera22.png" alt="Lettera 22 Typewriter">
+        </div>
+    </div>
 
-    // Listen for scroll events
-    window.addEventListener('scroll', handleScroll);
-    
-    // Check visibility on initial load
-    handleScroll();
-</script>
+    <!-- Third Draggable frame - Logo (no title) -->
+    <div class="pintori-frame frame-3" id="pintoriFrame3">
+        <!-- Vintage corner decorations -->
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner bottom-right"></div>
+        
+        <!-- Image area only (no header) -->
+        <div class="frame-image-area logo-frame">
+            <img src="img/olivetti.png" alt="olivetti">
+        </div>
+    </div>
 
+    <!-- JavaScript Files -->
+    <script src="js/draggable.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

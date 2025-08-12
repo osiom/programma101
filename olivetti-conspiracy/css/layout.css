@@ -1,0 +1,37 @@
+/* css/layout.css */
+/* Layout and positioning styles */
+
+/* Base layout styles would go here */
+/* Currently empty - all styles moved to components.css for organization */
+/* Frame positioning */
+.frame-1 {
+    position: fixed;
+    top: 20px;
+    left: 40px;
+    width: 160px;
+    height: 240px;
+    z-index: 4;
+    cursor: move;
+}
+
+.frame-2 {
+    position: fixed;
+    top: 30px;
+    left: 75%;
+    width: 160px;
+    height: 240px;
+    z-index: 4;
+    cursor: move;
+}
+
+/* Third frame - Logo frame (centered) */
+.frame-3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-1deg);
+    width: 400px;
+    height: 200px;
+    z-index: 4;
+    cursor: move;
+}
