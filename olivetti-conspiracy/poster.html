@@ -3,46 +3,50 @@
 <head>
   <title>Isometric Cubes - Telegram Updates</title>
   <style>
-    body {
+  body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background-color: transparent;
-      min-height: 100vh;
       position: relative;
-      overflow-x: hidden;
-    }
-
-    .updates-container {
-      position: relative;
+      overflow: hidden;
+      height: 100%;
       width: 100%;
-      height: 100vh;
+  }
+
+  .updates-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       background: transparent;
-    }
+  }
 
-    .cube-container {
+  .cube-container {
       position: absolute;
       pointer-events: all;
       cursor: pointer;
       opacity: 0;
       transform: scale(0.8);
       transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-    }
+      z-index: 9999;
+  }
 
-    .cube-container.show {
+  .cube-container.show {
       opacity: 1;
       transform: scale(1);
-    }
+  }
 
-    .cube-container.fade-out {
+  .cube-container.fade-out {
       opacity: 0;
       transform: scale(0.8);
-    }
+  }
 
-    .cube-container:hover {
+  .cube-container:hover {
       transform: scale(1.05);
-    }
+  }
 
     .cube {
       width: 200px;
@@ -72,7 +76,6 @@
       hyphens: auto;
     }
 
-    /* Cube faces positioning - FIXED for 200px cubes */
     .front { transform: translateZ(100px); }
     .back { transform: rotateY(180deg) translateZ(100px); }
     .right { transform: rotateY(90deg) translateZ(100px); }
@@ -80,7 +83,6 @@
     .top { transform: rotateX(90deg) translateZ(100px); }
     .bottom { transform: rotateX(-90deg) translateZ(100px); }
 
-    /* Color schemes */
     .cube-red .front { background: #e74c3c; color: white; }
     .cube-red .right { background: #c0392b; color: white; }
     .cube-red .top { background: #d62c1a; color: white; }
@@ -129,7 +131,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 10;
+      z-index: 10000; /* Even higher z-index for the close button */
       transition: all 0.2s ease;
     }
 
@@ -185,6 +187,8 @@
   <div class="updates-container" id="updates-container"></div>
 
   <script>
+/* poster.html script tag */
+
     const CHANNEL_USERNAME = "sorridianupdates";
     
     const CONFIG = {
@@ -203,55 +207,13 @@
     let updateIndex = 0;
     let isLoading = false;
 
-    // Left side positions only (0% to 45% of screen width)
     const positions = [
-      // Top area
-      { top: '5%', left: '5%' },
-      { top: '5%', left: '15%' },
-      { top: '5%', left: '25%' },
-      { top: '5%', left: '35%' },
-      
-      // Second row
-      { top: '20%', left: '5%' },
-      { top: '20%', left: '15%' },
-      { top: '20%', left: '25%' },
-      { top: '20%', left: '35%' },
-      
-      // Third row
-      { top: '35%', left: '5%' },
-      { top: '35%', left: '15%' },
-      { top: '35%', left: '25%' },
-      { top: '35%', left: '35%' },
-      
-      // Fourth row
-      { top: '50%', left: '5%' },
-      { top: '50%', left: '15%' },
-      { top: '50%', left: '25%' },
-      { top: '50%', left: '35%' },
-      
-      // Fifth row
-      { top: '65%', left: '5%' },
-      { top: '65%', left: '15%' },
-      { top: '65%', left: '25%' },
-      { top: '65%', left: '35%' },
-      
-      // Bottom row
-      { top: '80%', left: '5%' },
-      { top: '80%', left: '15%' },
-      { top: '80%', left: '25%' },
-      { top: '80%', left: '35%' },
-      
-      // Additional scattered positions
-      { top: '12%', left: '10%' },
-      { top: '12%', left: '30%' },
-      { top: '28%', left: '10%' },
-      { top: '28%', left: '30%' },
-      { top: '42%', left: '10%' },
-      { top: '42%', left: '30%' },
-      { top: '58%', left: '10%' },
-      { top: '58%', left: '30%' },
-      { top: '72%', left: '10%' },
-      { top: '72%', left: '30%' }
+      { top: '5%', left: '5%' }, { top: '5%', left: '30%' }, { top: '5%', left: '55%' }, { top: '5%', left: '80%' },
+      { top: '20%', left: '5%' }, { top: '20%', left: '30%' }, { top: '20%', left: '55%' }, { top: '20%', left: '80%' },
+      { top: '35%', left: '5%' }, { top: '35%', left: '30%' }, { top: '35%', left: '55%' }, { top: '35%', left: '80%' },
+      { top: '50%', left: '5%' }, { top: '50%', left: '30%' }, { top: '50%', left: '55%' }, { top: '50%', left: '80%' },
+      { top: '65%', left: '5%' }, { top: '65%', left: '30%' }, { top: '65%', left: '55%' }, { top: '65%', left: '80%' },
+      { top: '80%', left: '5%' }, { top: '80%', left: '30%' }, { top: '80%', left: '55%' }, { top: '80%', left: '80%' }
     ];
 
     function showLoading() {
@@ -282,12 +244,12 @@
       const colorClass = CONFIG.cubeColors[Math.floor(Math.random() * CONFIG.cubeColors.length)];
       
       container.className = `cube-container ${colorClass}`;
+      container.style.zIndex = '9999';
       
       Object.keys(position).forEach(key => {
         container.style[key] = position[key];
       });
 
-      // Limit text length for cube display
       const content = update.text.length > 40 ? 
         update.text.substring(0, 37) + '...' : 
         update.text;
@@ -304,10 +266,10 @@
         </div>
       `;
 
-      document.getElementById('updates-container').appendChild(container);
-      
+      document.body.appendChild(container);
+
       setTimeout(() => {
-        container.classList.add('show');
+          container.classList.add('show');
       }, 100);
 
       const removeTimeout = setTimeout(() => {
@@ -341,11 +303,11 @@
     }
 
     function showNextCube() {
-      if (isLoading || allUpdates.length === 0 || activeCubes.length >= CONFIG.maxSimultaneousUpdates) return;
-
+      if (isLoading || allUpdates.length === 0 || activeCubes.length >= CONFIG.maxSimultaneousUpdates) {
+        return;
+      }
       const update = allUpdates[updateIndex % allUpdates.length];
       updateIndex++;
-
       const position = getRandomPosition();
       createCube(update, position);
     }
@@ -353,28 +315,36 @@
     async function fetchTelegramPosts() {
       try {
         showLoading();
-
-        // New, working public CORS proxy
-        const proxy = 'https://api.scrapingant.com/v2/general?url=';
+        const proxies = [
+          'https://api.allorigins.win/raw?url=',
+          'https://cors-anywhere.herokuapp.com/',
+          'https://corsproxy.io/?'
+        ];
+        
         const telegramPublicUrl = `https://t.me/s/${CHANNEL_USERNAME}`;
+        let html = null;
         
-        const finalUrl = proxy + encodeURIComponent(telegramPublicUrl);
+        for (const proxy of proxies) {
+          try {
+            const finalUrl = proxy.includes('?url=') 
+              ? proxy + encodeURIComponent(telegramPublicUrl)
+              : proxy + telegramPublicUrl;
               
-        const response = await fetch(finalUrl, {
-          headers: {
-            'x-api-key': 'YOUR_API_KEY_HERE' // You need to get your own API key
-          }
-        });
-        
-        if (!response.ok) {
-          throw new Error("Proxy failed to fetch content");
+            const response = await fetch(finalUrl);
+            
+            if (response.ok) {
+              html = await response.text();
+              break;
+            }
+          } catch (proxyError) {}
         }
         
-        const html = await response.text();
+        if (!html) {
+          throw new Error("All proxies failed");
+        }
         
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        
         const selectors = [
           '.tgme_widget_message_text', 
           '.tgme_widget_message_bubble', 
@@ -387,16 +357,13 @@
           const elements = doc.querySelectorAll(selector);
           if (elements && elements.length > 0) {
             messageElements = elements;
-            console.log(`Found ${elements.length} messages with selector: ${selector}`);
             break;
           }
         }
         
         if (messageElements.length > 0) {
           const messages = Array.from(messageElements)
-            .map(element => ({
-              text: element.textContent.trim()
-            }))
+            .map(element => ({ text: element.textContent.trim() }))
             .filter(msg => {
               if (!msg.text) return false;
               
@@ -406,39 +373,39 @@
                 "changed the chat photo", "changed the group photo",
                 "the group was renamed", "the channel was renamed",
                 "changed group name", "changed channel name",
-                "added a new admin", "removed an admin"
+                "added a new admin", "removed an admin",
+                "added admin", "removed admin",
+                "created the group", "created the channel"
               ];
-              
               const lowerCaseText = msg.text.toLowerCase();
               return !adminMessages.some(phrase => lowerCaseText.includes(phrase.toLowerCase()));
-            });
+            })
+            .slice(0, 10);
           
           if (messages.length > 0) {
             allUpdates = messages;
-            console.log(`Loaded ${messages.length} updates`);
           } else {
             allUpdates = [
-              { text: "No recent updates available" },
-              { text: "Check back later for new content" }
+              { text: "Welcome to our updates!" },
+              { text: "Follow @" + CHANNEL_USERNAME },
+              { text: "Latest news coming soon" }
             ];
           }
         } else {
           allUpdates = [
-            { text: "Updates loading..." },
-            { text: "Content will appear here" }
+            { text: "Welcome to our updates!" },
+            { text: "Follow @" + CHANNEL_USERNAME },
+            { text: "Latest news coming soon" }
           ];
         }
         
         hideLoading();
-        
       } catch (error) {
-        console.error("Error fetching Telegram posts:", error);
-        
         allUpdates = [
-          { text: "Updates temporarily unavailable" },
-          { text: "Please check back later" }
+          { text: "Updates loading..." },
+          { text: "Check back soon!" },
+          { text: "Follow @" + CHANNEL_USERNAME }
         ];
-        
         hideLoading();
       }
     }
@@ -447,10 +414,7 @@
       if (allUpdates.length > 0) {
         showNextCube();
       }
-      
-      setInterval(() => {
-        showNextCube();
-      }, CONFIG.timeBetweenUpdates);
+      setInterval(showNextCube, CONFIG.timeBetweenUpdates);
     }
 
     window.removeCube = removeCube;
@@ -458,7 +422,6 @@
     async function init() {
       await fetchTelegramPosts();
       startCubeDisplay();
-      // Refresh Telegram data every 5 minutes
       setInterval(fetchTelegramPosts, 300000);
     }
 

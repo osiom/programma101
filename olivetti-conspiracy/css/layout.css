@@ -1,16 +1,24 @@
 /* css/layout.css */
 /* Layout and positioning styles */
 
-/* Base layout styles would go here */
-/* Currently empty - all styles moved to components.css for organization */
+/* RSS Feed container to be placed on the left side of the screen */
+.rss-feed-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 999;
+}
+
 /* Frame positioning */
 .frame-1 {
     position: fixed;
     top: 20px;
-    left: 40px;
+    left: 60%; /* Corrected to start after the RSS feed container */
     width: 160px;
     height: 240px;
-    z-index: 4;
+    z-index: 999;
     cursor: move;
 }
 
@@ -20,7 +28,7 @@
     left: 75%;
     width: 160px;
     height: 240px;
-    z-index: 4;
+    z-index: 999;
     cursor: move;
 }
 
@@ -32,6 +40,6 @@
     transform: translate(-50%, -50%) rotate(-1deg);
     width: 400px;
     height: 200px;
-    z-index: 4;
+    z-index: 999;
     cursor: move;
 }

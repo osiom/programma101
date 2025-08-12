@@ -22,13 +22,13 @@
     width: auto;
 }
 
-/* RSS Feed iframe */
-.rss-feed-iframe {
-    width: 100%;
-    height: 100%;
+.rss-feed-container.left {
+    background: transparent;
     border: none;
-    background: transparent; /* Make iframe background transparent */
-    pointer-events: auto; /* Re-enable pointer events for the iframe itself */
+    padding: 0;
+    max-width: none;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 /* Pintori-style frame styles */
@@ -69,7 +69,6 @@
     left: 60%;
     width: 160px;
     height: 240px;
-    z-index: 4;
     cursor: move;
 }
 
@@ -79,7 +78,6 @@
     left: 75%;
     width: 160px;
     height: 240px;
-    z-index: 4;
     cursor: move;
 }
 
@@ -91,7 +89,6 @@
     transform: translate(-50%, -50%) rotate(-1deg);
     width: 400px;
     height: 200px;
-    z-index: 4;
     cursor: move;
 }
 
