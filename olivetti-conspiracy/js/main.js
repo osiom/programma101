@@ -1,17 +1,13 @@
-console.log("main.js loaded!");
+// Add this to your main.js file or in a <script> tag in index.html
+document.getElementById('pintoriFrame1').addEventListener('click', function() {
+    window.open('https://it.wikipedia.org/wiki/Mario_Tchou', '_blank'); // Opens in new tab
+    // OR use this for same window:
+    // window.location.href = 'mario-tchou.html';
+});
 
-
-// Simple initialization when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM loaded, initializing frames...");
-    
-    // Initialize both draggable frames
-    if (typeof DraggableFrame !== 'undefined') {
-        const frame1 = new DraggableFrame('pintoriFrame1');
-        const frame2 = new DraggableFrame('pintoriFrame2');
-        const frame3 = new DraggableFrame('pintoriFrame3');
-        console.log("Frames initialized successfully");
-    } else {
-        console.error("DraggableFrame class not found!");
-    }
+// Add this to your main.js file or in a <script> tag in index.html
+document.getElementById('pintoriFrame3').addEventListener('click', function() {
+    window.open('https://en.wikipedia.org/wiki/Olivetti', '_blank'); // Opens in new tab
+    // OR use this for same window:
+    // window.location.href = 'mario-tchou.html';
 });

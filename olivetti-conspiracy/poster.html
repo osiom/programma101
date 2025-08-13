@@ -7,11 +7,11 @@
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: transparent;
+      background-color: #f0ead6; /* Cream background like Olivetti poster */
       position: relative;
       overflow: hidden;
-      height: 100%;
-      width: 100%;
+      height: 100vh;
+      width: 100vw;
   }
 
   .updates-container {
@@ -22,6 +22,7 @@
       height: 100%;
       pointer-events: none;
       background: transparent;
+      z-index: 2;
   }
 
   .cube-container {
@@ -48,158 +49,157 @@
       transform: scale(1.05);
   }
 
-    .cube {
-      width: 200px;
-      height: 200px;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(-15deg) rotateY(30deg);
-      transition: transform 0.3s ease;
-    }
+  .cube {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-15deg) rotateY(30deg);
+    transition: transform 0.3s ease;
+  }
 
-    .cube-face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 500;
-      text-align: center;
-      padding: 8px;
-      box-sizing: border-box;
-      line-height: 1.1;
-      letter-spacing: 0.3px;
-      overflow: hidden;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
+  .cube-face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 500;
+    text-align: center;
+    padding: 6px;
+    box-sizing: border-box;
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    word-wrap: break-word;
+    hyphens: auto;
+    border: 0px solid #333; /* Visible lines for all faces */
+  }
 
-    .front { transform: translateZ(100px); }
-    .back { transform: rotateY(180deg) translateZ(100px); }
-    .right { transform: rotateY(90deg) translateZ(100px); }
-    .left { transform: rotateY(-90deg) translateZ(100px); }
-    .top { transform: rotateX(90deg) translateZ(100px); }
-    .bottom { transform: rotateX(-90deg) translateZ(100px); }
+  .front { transform: translateZ(60px); }
+  .back { transform: rotateY(180deg) translateZ(60px); }
+  .right { transform: rotateY(90deg) translateZ(60px); }
+  .left { transform: rotateY(-90deg) translateZ(60px); }
+  .top { transform: rotateX(90deg) translateZ(60px); }
+  .bottom { transform: rotateX(-90deg) translateZ(60px); }
 
-    .cube-red .front { background: #e74c3c; color: white; }
-    .cube-red .right { background: #c0392b; color: white; }
-    .cube-red .top { background: #d62c1a; color: white; }
+  /* Default white for all faces */
+  .cube-face {
+    background: transparent;
+    color: #333;
+  }
 
-    .cube-blue .front { background: #3498db; color: white; }
-    .cube-blue .right { background: #2980b9; color: white; }
-    .cube-blue .top { background: #5dade2; color: white; }
+  /* Color both FRONT and TOP faces */
+  .cube-red .front { background: #e74c3c; color: white; border: 1px solid #c0392b; }
+  .cube-red .top { background: #d62c1a; color: white; border: 1px solid #c0392b; }
 
-    .cube-yellow .front { background: #f1c40f; color: #2c3e50; }
-    .cube-yellow .right { background: #f39c12; color: #2c3e50; }
-    .cube-yellow .top { background: #f7dc6f; color: #2c3e50; }
+  .cube-blue .front { background: #3498db; color: white; border: 1px solid #2980b9; }
+  .cube-blue .top { background: #5dade2; color: white; border: 1px solid #2980b9; }
 
-    .cube-purple .front { background: #9b59b6; color: white; }
-    .cube-purple .right { background: #8e44ad; color: white; }
-    .cube-purple .top { background: #bb8fce; color: white; }
+  .cube-yellow .front { background: #f1c40f; color: #2c3e50; border: 1px solid #f39c12; }
+  .cube-yellow .top { background: #f7dc6f; color: #2c3e50; border: 1px solid #f39c12; }
 
-    .cube-teal .front { background: #1abc9c; color: white; }
-    .cube-teal .right { background: #16a085; color: white; }
-    .cube-teal .top { background: #76d7c4; color: white; }
+  .cube-purple .front { background: #9b59b6; color: white; border: 1px solid #8e44ad; }
+  .cube-purple .top { background: #bb8fce; color: white; border: 1px solid #8e44ad; }
 
-    .cube-orange .front { background: #e67e22; color: white; }
-    .cube-orange .right { background: #d35400; color: white; }
-    .cube-orange .top { background: #f8c471; color: white; }
+  .cube-teal .front { background: #1abc9c; color: white; border: 1px solid #16a085; }
+  .cube-teal .top { background: #76d7c4; color: white; border: 1px solid #16a085; }
 
-    .cube-white .front { background: #ecf0f1; color: #2c3e50; }
-    .cube-white .right { background: #bdc3c7; color: #2c3e50; }
-    .cube-white .top { background: #ffffff; color: #2c3e50; }
+  .cube-orange .front { background: #e67e22; color: white; border: 1px solid #d35400; }
+  .cube-orange .top { background: #f8c471; color: white; border: 1px solid #d35400; }
 
-    .cube-black .front { background: #2c3e50; color: white; }
-    .cube-black .right { background: #34495e; color: white; }
-    .cube-black .top { background: #5d6d7e; color: white; }
+  .cube-green .front { background: #27ae60; color: white; border: 1px solid #229954; }
+  .cube-green .top { background: #58d68d; color: white; border: 1px solid #229954; }
 
-    .close-btn {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: rgba(0,0,0,0.7);
-      border: none;
-      color: white;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000; /* Even higher z-index for the close button */
-      transition: all 0.2s ease;
-    }
+  .close-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: rgba(0,0,0,0.7);
+    border: none;
+    color: #ffebae;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: all 0.2s ease;
+  }
 
-    .close-btn:hover {
-      background: rgba(0,0,0,0.9);
-      transform: scale(1.1);
-    }
+  .close-btn:hover {
+    background: rgba(0,0,0,0.9);
+    transform: scale(1.1);
+  }
 
-    .loading-indicator {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      background: rgba(44, 62, 80, 0.9);
-      color: #ffffff;
-      padding: 10px 15px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      z-index: 2000;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
+  .loading-indicator {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: rgba(44, 62, 80, 0.9);
+    color: #ffebae;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
 
-    .loading-indicator.show {
-      opacity: 1;
-    }
-
-    @media (max-width: 900px) {
-      .cube {
-        width: 160px;
-        height: 160px;
-      }
-      
-      .cube-face {
-        width: 160px;
-        height: 160px;
-        font-size: 8px;
-        padding: 6px;
-      }
-      
-      .front { transform: translateZ(80px); }
-      .back { transform: rotateY(180deg) translateZ(80px); }
-      .right { transform: rotateY(90deg) translateZ(80px); }
-      .left { transform: rotateY(-90deg) translateZ(80px); }
-      .top { transform: rotateX(90deg) translateZ(80px); }
-      .bottom { transform: rotateX(-90deg) translateZ(80px); }
-    }
+  .loading-indicator.show {
+    opacity: 1;
+  }
   </style>
 </head>
 <body>
+  <!-- Add this SVG to your poster.html body, right after the opening <body> tag -->
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;">
+    <defs>
+      <pattern id="isometricHangingGrid" x="0" y="0" width="120" height="104" patternUnits="userSpaceOnUse">
+        <!-- Horizontal lines (left to right) -->
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="26" x2="120" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="52" x2="120" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="78" x2="120" y2="78" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="104" x2="120" y2="104" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        
+        <!-- Diagonal lines (left bottom to top right) - matching cube angle -->
+        <line x1="0" y1="104" x2="60" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="60" y1="104" x2="120" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="30" y1="104" x2="90" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="90" y1="104" x2="150" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        
+        <!-- Additional diagonal lines for density -->
+        <line x1="0" y1="78" x2="60" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="60" y1="78" x2="120" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="30" y1="78" x2="90" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        
+        <line x1="0" y1="52" x2="60" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="60" y1="52" x2="120" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="30" y1="52" x2="90" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+      </pattern>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#isometricHangingGrid)"/>
+  </svg>
   <div class="loading-indicator" id="loading-indicator">Loading Updates</div>
   <div class="updates-container" id="updates-container"></div>
 
   <script>
-/* poster.html script tag */
-
     const CHANNEL_USERNAME = "sorridianupdates";
     
     const CONFIG = {
-      maxSimultaneousUpdates: 6,
-      updateLifetime: 15000,
-      timeBetweenUpdates: 3000,
-      cubeColors: [
-        'cube-red', 'cube-blue', 'cube-yellow', 
-        'cube-purple', 'cube-teal', 'cube-orange', 'cube-white',
-        'cube-black'
-      ]
+      maxSimultaneousUpdates: 15,
+      updateLifetime: 20000,
+      timeBetweenUpdates: 1500,
     };
 
     let allUpdates = [];
@@ -207,13 +207,25 @@
     let updateIndex = 0;
     let isLoading = false;
 
+    // More spaced out grid - increased spacing between cubes
     const positions = [
-      { top: '5%', left: '5%' }, { top: '5%', left: '30%' }, { top: '5%', left: '55%' }, { top: '5%', left: '80%' },
-      { top: '20%', left: '5%' }, { top: '20%', left: '30%' }, { top: '20%', left: '55%' }, { top: '20%', left: '80%' },
-      { top: '35%', left: '5%' }, { top: '35%', left: '30%' }, { top: '35%', left: '55%' }, { top: '35%', left: '80%' },
-      { top: '50%', left: '5%' }, { top: '50%', left: '30%' }, { top: '50%', left: '55%' }, { top: '50%', left: '80%' },
-      { top: '65%', left: '5%' }, { top: '65%', left: '30%' }, { top: '65%', left: '55%' }, { top: '65%', left: '80%' },
-      { top: '80%', left: '5%' }, { top: '80%', left: '30%' }, { top: '80%', left: '55%' }, { top: '80%', left: '80%' }
+      // Much more spacing - 12% between columns, 10% between rows
+      { top: '15%', left: '5%', column: 0 }, { top: '15%', left: '17%', column: 1 }, { top: '15%', left: '29%', column: 2 }, { top: '15%', left: '41%', column: 3 },
+      { top: '25%', left: '5%', column: 0 }, { top: '25%', left: '17%', column: 1 }, { top: '25%', left: '29%', column: 2 }, { top: '25%', left: '41%', column: 4 },
+      { top: '35%', left: '5%', column: 0 }, { top: '35%', left: '17%', column: 1 }, { top: '35%', left: '29%', column: 2 }, { top: '35%', left: '41%', column: 3 },
+      { top: '45%', left: '5%', column: 0 }, { top: '45%', left: '17%', column: 1 }, { top: '45%', left: '29%', column: 2 }, { top: '45%', left: '41%', column: 4 },
+      { top: '55%', left: '5%', column: 0 }, { top: '55%', left: '17%', column: 1 }, { top: '55%', left: '29%', column: 2 }, { top: '55%', left: '41%', column: 3 },
+      { top: '65%', left: '5%', column: 0 }, { top: '65%', left: '17%', column: 1 }, { top: '65%', left: '29%', column: 2 }, { top: '65%', left: '41%', column: 4 },
+      { top: '75%', left: '5%', column: 0 }, { top: '75%', left: '17%', column: 1 }, { top: '75%', left: '29%', column: 2 }, { top: '75%', left: '41%', column: 3 },
+    ];
+
+    // Column color mapping
+    const columnColors = [
+      'cube-blue',     // Column 0
+      'cube-red',      // Column 1
+      'cube-yellow',   // Column 2
+      'cube-purple',   // Column 3
+      'cube-teal'      // Column 4
     ];
 
     function showLoading() {
@@ -230,7 +242,8 @@
       const usedPositions = activeCubes.map(cube => cube.position);
       const availablePositions = positions.filter(pos => 
         !usedPositions.some(used => 
-          used.top === pos.top && used.left === pos.left
+          Math.abs(parseFloat(used.top) - parseFloat(pos.top)) < 8 && // Increased from 3 to 8
+          Math.abs(parseFloat(used.left) - parseFloat(pos.left)) < 10  // Increased from 3 to 10
         )
       );
       
@@ -241,17 +254,15 @@
 
     function createCube(update, position) {
       const container = document.createElement('div');
-      const colorClass = CONFIG.cubeColors[Math.floor(Math.random() * CONFIG.cubeColors.length)];
+      const colorClass = columnColors[position.column];
       
       container.className = `cube-container ${colorClass}`;
       container.style.zIndex = '9999';
-      
-      Object.keys(position).forEach(key => {
-        container.style[key] = position[key];
-      });
+      container.style.top = position.top;
+      container.style.left = position.left;
 
-      const content = update.text.length > 40 ? 
-        update.text.substring(0, 37) + '...' : 
+      const content = update.text.length > 30 ? 
+        update.text.substring(0, 27) + '...' : 
         update.text;
 
       container.innerHTML = `
@@ -266,7 +277,7 @@
         </div>
       `;
 
-      document.body.appendChild(container);
+      document.getElementById('updates-container').appendChild(container);
 
       setTimeout(() => {
           container.classList.add('show');
