@@ -5,7 +5,7 @@
 .image-container {
     border: 4px solid #333333;
     padding: 8px;
-    background-color: #f0ead6; /* Very light cream color for vintage feel */
+    background-color: #ffffff;
     max-width: 390px;
 }
 
@@ -33,11 +33,11 @@
 
 /* Pintori-style frame styles */
 .pintori-frame {
-    background: #ffffff;
+    background: #fdfdfd;
     border: none;
     box-shadow: 
         0 0 0 3px #333333,
-        0 0 0 6px #f0ead6,
+        0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 8px 25px rgba(0, 0, 0, 0.25);
     transform: rotate(-1deg);
@@ -48,7 +48,7 @@
     transform: rotate(0deg) scale(1.02);
     box-shadow: 
         0 0 0 3px #333333,
-        0 0 0 6px #f0ead6,
+        0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 12px 35px rgba(0, 0, 0, 0.35);
 }
@@ -57,7 +57,7 @@
     transform: rotate(2deg) scale(1.05);
     box-shadow: 
         0 0 0 3px #333333,
-        0 0 0 6px #f0ead6,
+        0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 15px 45px rgba(0, 0, 0, 0.4);
 }
@@ -104,7 +104,7 @@
     display: flex;
     align-items: center;
     padding: 0 12px;
-    color: #f0ead6;
+    color: #ffffff;
     position: relative;
 }
 
@@ -143,7 +143,7 @@
 /* Frame image area */
 .frame-image-area {
     height: 200px;
-    background: #f8f6f2;
+    background: #ffffff;
     position: relative;
     overflow: hidden;
 }

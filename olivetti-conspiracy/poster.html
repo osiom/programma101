@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Isometric Cubes - Telegram Updates</title>
+  <title>Cascading Village - Telegram Updates</title>
   <style>
   body {
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #f0ead6; /* Cream background like Olivetti poster */
+      background-color: #ffffff;
       position: relative;
       overflow: hidden;
       height: 100vh;
@@ -30,101 +30,110 @@
       pointer-events: all;
       cursor: pointer;
       opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+      transform: scale(0.8) translateY(-30px);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
       z-index: 9999;
   }
 
   .cube-container.show {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translateY(0);
   }
 
   .cube-container.fade-out {
       opacity: 0;
-      transform: scale(0.8);
+      transform: scale(0.8) translateY(30px);
   }
 
   .cube-container:hover {
-      transform: scale(1.05);
+      transform: scale(1.08) translateY(-5px);
   }
 
   .cube {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(-15deg) rotateY(30deg);
+    transform: rotateX(-20deg) rotateY(35deg);
     transition: transform 0.3s ease;
   }
 
   .cube-face {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 8px;
-    font-weight: 500;
+    font-size: 7px;
+    font-weight: 600;
     text-align: center;
-    padding: 6px;
+    padding: 8px;
     box-sizing: border-box;
-    line-height: 1.1;
-    letter-spacing: 0.3px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
     overflow: hidden;
     word-wrap: break-word;
     hyphens: auto;
-    border: 0px solid #333; /* Visible lines for all faces */
+    border: 1px solid rgba(0,0,0,0.1);
   }
 
-  .front { transform: translateZ(60px); }
-  .back { transform: rotateY(180deg) translateZ(60px); }
-  .right { transform: rotateY(90deg) translateZ(60px); }
-  .left { transform: rotateY(-90deg) translateZ(60px); }
-  .top { transform: rotateX(90deg) translateZ(60px); }
-  .bottom { transform: rotateX(-90deg) translateZ(60px); }
+  .front { transform: translateZ(55px); }
+  .back { transform: rotateY(180deg) translateZ(55px); }
+  .right { transform: rotateY(90deg) translateZ(55px); }
+  .left { transform: rotateY(-90deg) translateZ(55px); }
+  .top { transform: rotateX(90deg) translateZ(55px); }
+  .bottom { transform: rotateX(-90deg) translateZ(55px); }
 
-  /* Default white for all faces */
+  /* Default neutral for all faces except front */
   .cube-face {
-    background: transparent;
-    color: #333;
+    background: #ffffff;
+    color: #5a5a5a;
   }
 
-  /* Color both FRONT and TOP faces */
-  .cube-red .front { background: #e74c3c; color: white; border: 1px solid #c0392b; }
-  .cube-red .top { background: #d62c1a; color: white; border: 1px solid #c0392b; }
+  /* Only the FRONT face gets the vibrant color */
+  .color-red .front { 
+    background: #d63031; 
+    color: white; 
+    font-weight: 700;
+  }
 
-  .cube-blue .front { background: #3498db; color: white; border: 1px solid #2980b9; }
-  .cube-blue .top { background: #5dade2; color: white; border: 1px solid #2980b9; }
+  .color-blue .front { 
+    background: #0984e3; 
+    color: white; 
+    font-weight: 700;
+  }
 
-  .cube-yellow .front { background: #f1c40f; color: #2c3e50; border: 1px solid #f39c12; }
-  .cube-yellow .top { background: #f7dc6f; color: #2c3e50; border: 1px solid #f39c12; }
+  .color-yellow .front { 
+    background: #fdcb6e; 
+    color: #2d3436; 
+    font-weight: 700;
+  }
 
-  .cube-purple .front { background: #9b59b6; color: white; border: 1px solid #8e44ad; }
-  .cube-purple .top { background: #bb8fce; color: white; border: 1px solid #8e44ad; }
+  .color-green .front { 
+    background: #00b894; 
+    color: white; 
+    font-weight: 700;
+  }
 
-  .cube-teal .front { background: #1abc9c; color: white; border: 1px solid #16a085; }
-  .cube-teal .top { background: #76d7c4; color: white; border: 1px solid #16a085; }
-
-  .cube-orange .front { background: #e67e22; color: white; border: 1px solid #d35400; }
-  .cube-orange .top { background: #f8c471; color: white; border: 1px solid #d35400; }
-
-  .cube-green .front { background: #27ae60; color: white; border: 1px solid #229954; }
-  .cube-green .top { background: #58d68d; color: white; border: 1px solid #229954; }
+  /* All other faces remain neutral */
+  .cube-face:not(.front) {
+    background: #ffffff !important;
+    color: #7a7a7a !important;
+  }
 
   .close-btn {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    background: rgba(0,0,0,0.7);
+    top: -10px;
+    right: -10px;
+    background: rgba(0,0,0,0.6);
     border: none;
-    color: #ffebae;
-    width: 18px;
-    height: 18px;
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -134,7 +143,7 @@
   }
 
   .close-btn:hover {
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.8);
     transform: scale(1.1);
   }
 
@@ -143,7 +152,7 @@
     top: 30px;
     right: 30px;
     background: rgba(44, 62, 80, 0.9);
-    color: #ffebae;
+    color: #ffffff;
     padding: 10px 15px;
     font-size: 12px;
     font-weight: 600;
@@ -157,34 +166,48 @@
   .loading-indicator.show {
     opacity: 1;
   }
+
+  /* Sequence number display */
+  .sequence-number {
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+  }
   </style>
 </head>
 <body>
-  <!-- Add this SVG to your poster.html body, right after the opening <body> tag -->
   <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;">
     <defs>
       <pattern id="isometricHangingGrid" x="0" y="0" width="120" height="104" patternUnits="userSpaceOnUse">
-        <!-- Horizontal lines (left to right) -->
-        <line x1="0" y1="0" x2="120" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="0" y1="26" x2="120" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="0" y1="52" x2="120" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="0" y1="78" x2="120" y2="78" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="0" y1="104" x2="120" y2="104" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="0" y1="26" x2="120" y2="26" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="0" y1="52" x2="120" y2="52" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="0" y1="78" x2="120" y2="78" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="0" y1="104" x2="120" y2="104" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
         
-        <!-- Diagonal lines (left bottom to top right) - matching cube angle -->
-        <line x1="0" y1="104" x2="60" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="60" y1="104" x2="120" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="30" y1="104" x2="90" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="90" y1="104" x2="150" y2="52" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="104" x2="60" y2="52" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="60" y1="104" x2="120" y2="52" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="30" y1="104" x2="90" y2="52" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="90" y1="104" x2="150" y2="52" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
         
-        <!-- Additional diagonal lines for density -->
-        <line x1="0" y1="78" x2="60" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="60" y1="78" x2="120" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="30" y1="78" x2="90" y2="26" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="78" x2="60" y2="26" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="60" y1="78" x2="120" y2="26" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="30" y1="78" x2="90" y2="26" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
         
-        <line x1="0" y1="52" x2="60" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="60" y1="52" x2="120" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="30" y1="52" x2="90" y2="0" stroke="#d0c8b8" stroke-width="0.8" opacity="0.6"/>
+        <line x1="0" y1="52" x2="60" y2="0" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="60" y1="52" x2="120" y2="0" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="30" y1="52" x2="90" y2="0" stroke="#d0c8b8" stroke-width="0.5" opacity="0.3"/>
       </pattern>
     </defs>
     
@@ -197,36 +220,116 @@
     const CHANNEL_USERNAME = "sorridianupdates";
     
     const CONFIG = {
-      maxSimultaneousUpdates: 15,
-      updateLifetime: 20000,
-      timeBetweenUpdates: 1500,
+      maxSimultaneousUpdates: 20,
+      updateLifetime: 35000,
+      timeBetweenUpdates: 1600,
     };
 
     let allUpdates = [];
     let activeCubes = [];
     let updateIndex = 0;
+    let sequenceNumber = 1;
     let isLoading = false;
 
-    // More spaced out grid - increased spacing between cubes
-    const positions = [
-      // Much more spacing - 12% between columns, 10% between rows
-      { top: '15%', left: '5%', column: 0 }, { top: '15%', left: '17%', column: 1 }, { top: '15%', left: '29%', column: 2 }, { top: '15%', left: '41%', column: 3 },
-      { top: '25%', left: '5%', column: 0 }, { top: '25%', left: '17%', column: 1 }, { top: '25%', left: '29%', column: 2 }, { top: '25%', left: '41%', column: 4 },
-      { top: '35%', left: '5%', column: 0 }, { top: '35%', left: '17%', column: 1 }, { top: '35%', left: '29%', column: 2 }, { top: '35%', left: '41%', column: 3 },
-      { top: '45%', left: '5%', column: 0 }, { top: '45%', left: '17%', column: 1 }, { top: '45%', left: '29%', column: 2 }, { top: '45%', left: '41%', column: 4 },
-      { top: '55%', left: '5%', column: 0 }, { top: '55%', left: '17%', column: 1 }, { top: '55%', left: '29%', column: 2 }, { top: '55%', left: '41%', column: 3 },
-      { top: '65%', left: '5%', column: 0 }, { top: '65%', left: '17%', column: 1 }, { top: '65%', left: '29%', column: 2 }, { top: '65%', left: '41%', column: 4 },
-      { top: '75%', left: '5%', column: 0 }, { top: '75%', left: '17%', column: 1 }, { top: '75%', left: '29%', column: 2 }, { top: '75%', left: '41%', column: 3 },
+    // 4 color system - randomly assigned to each news
+    const colors = ['color-red', 'color-blue', 'color-yellow', 'color-green'];
+
+    // Much more horizontal cascade - spreading wide across the screen
+    const cascadePath = [
+      // Top row - spreading wide horizontally
+      { top: '15%', left: '5%' },
+      { top: '18%', left: '15%' },
+      { top: '12%', left: '25%' },
+      { top: '20%', left: '35%' },
+      { top: '16%', left: '45%' },
+      { top: '14%', left: '55%' },
+      { top: '19%', left: '65%' },
+      { top: '17%', left: '75%' },
+      { top: '13%', left: '85%' },
+      
+      // Second row - wider spread
+      { top: '28%', left: '8%' },
+      { top: '25%', left: '18%' },
+      { top: '30%', left: '28%' },
+      { top: '26%', left: '38%' },
+      { top: '32%', left: '48%' },
+      { top: '29%', left: '58%' },
+      { top: '27%', left: '68%' },
+      { top: '33%', left: '78%' },
+      { top: '31%', left: '88%' },
+      
+      // Third row - even wider
+      { top: '42%', left: '3%' },
+      { top: '38%', left: '13%' },
+      { top: '44%', left: '23%' },
+      { top: '40%', left: '33%' },
+      { top: '46%', left: '43%' },
+      { top: '39%', left: '53%' },
+      { top: '43%', left: '63%' },
+      { top: '41%', left: '73%' },
+      { top: '45%', left: '83%' },
+      
+      // Fourth row - maximum spread
+      { top: '55%', left: '6%' },
+      { top: '52%', left: '16%' },
+      { top: '58%', left: '26%' },
+      { top: '54%', left: '36%' },
+      { top: '60%', left: '46%' },
+      { top: '53%', left: '56%' },
+      { top: '57%', left: '66%' },
+      { top: '55%', left: '76%' },
+      { top: '59%', left: '86%' },
+      
+      // Bottom row - final spread
+      { top: '68%', left: '10%' },
+      { top: '65%', left: '20%' },
+      { top: '72%', left: '30%' },
+      { top: '69%', left: '40%' },
+      { top: '74%', left: '50%' },
+      { top: '67%', left: '60%' },
+      { top: '71%', left: '70%' },
+      { top: '70%', left: '80%' },
+      
+      // Additional scattered positions for even more variety
+      { top: '22%', left: '12%' },
+      { top: '24%', left: '22%' },
+      { top: '21%', left: '32%' },
+      { top: '23%', left: '42%' },
+      { top: '25%', left: '52%' },
+      { top: '22%', left: '62%' },
+      { top: '24%', left: '72%' },
+      { top: '20%', left: '82%' },
+      
+      { top: '36%', left: '10%' },
+      { top: '34%', left: '20%' },
+      { top: '37%', left: '30%' },
+      { top: '35%', left: '40%' },
+      { top: '38%', left: '50%' },
+      { top: '36%', left: '60%' },
+      { top: '35%', left: '70%' },
+      { top: '37%', left: '80%' },
+      
+      { top: '49%', left: '8%' },
+      { top: '47%', left: '18%' },
+      { top: '51%', left: '28%' },
+      { top: '48%', left: '38%' },
+      { top: '50%', left: '48%' },
+      { top: '49%', left: '58%' },
+      { top: '47%', left: '68%' },
+      { top: '51%', left: '78%' },
+      
+      { top: '62%', left: '5%' },
+      { top: '64%', left: '15%' },
+      { top: '61%', left: '25%' },
+      { top: '63%', left: '35%' },
+      { top: '60%', left: '45%' },
+      { top: '62%', left: '55%' },
+      { top: '64%', left: '65%' },
+      { top: '61%', left: '75%' },
+      { top: '63%', left: '85%' }
     ];
 
-    // Column color mapping
-    const columnColors = [
-      'cube-blue',     // Column 0
-      'cube-red',      // Column 1
-      'cube-yellow',   // Column 2
-      'cube-purple',   // Column 3
-      'cube-teal'      // Column 4
-    ];
+    let currentPathIndex = 0;
 
     function showLoading() {
       isLoading = true;
@@ -238,35 +341,40 @@
       document.getElementById('loading-indicator').classList.remove('show');
     }
 
-    function getRandomPosition() {
-      const usedPositions = activeCubes.map(cube => cube.position);
-      const availablePositions = positions.filter(pos => 
-        !usedPositions.some(used => 
-          Math.abs(parseFloat(used.top) - parseFloat(pos.top)) < 8 && // Increased from 3 to 8
-          Math.abs(parseFloat(used.left) - parseFloat(pos.left)) < 10  // Increased from 3 to 10
-        )
-      );
+    function getNextPosition() {
+      // Get next position in cascade, with slight randomization
+      const basePosition = cascadePath[currentPathIndex % cascadePath.length];
+      currentPathIndex++;
       
-      return availablePositions.length === 0 ? 
-        positions[Math.floor(Math.random() * positions.length)] :
-        availablePositions[Math.floor(Math.random() * availablePositions.length)];
+      // Add slight random variation to make it more organic
+      const variation = 2; // smaller variation for more controlled spread
+      const randomTop = parseFloat(basePosition.top) + (Math.random() - 0.5) * variation;
+      const randomLeft = parseFloat(basePosition.left) + (Math.random() - 0.5) * variation;
+      
+      return {
+        top: Math.max(8, Math.min(80, randomTop)) + '%',
+        left: Math.max(2, Math.min(92, randomLeft)) + '%'
+      };
     }
 
     function createCube(update, position) {
       const container = document.createElement('div');
-      const colorClass = columnColors[position.column];
+      
+      // Randomly assign one of the 4 colors
+      const colorClass = colors[Math.floor(Math.random() * colors.length)];
       
       container.className = `cube-container ${colorClass}`;
       container.style.zIndex = '9999';
       container.style.top = position.top;
       container.style.left = position.left;
 
-      const content = update.text.length > 30 ? 
-        update.text.substring(0, 27) + '...' : 
+      const content = update.text.length > 25 ? 
+        update.text.substring(0, 22) + '...' : 
         update.text;
 
       container.innerHTML = `
         <button class="close-btn" onclick="removeCube(this.parentElement)">×</button>
+        <div class="sequence-number">${sequenceNumber}</div>
         <div class="cube">
           <div class="cube-face front">${content}</div>
           <div class="cube-face back"></div>
@@ -290,10 +398,13 @@
       const cubeData = {
         element: container,
         position: position,
-        timeout: removeTimeout
+        timeout: removeTimeout,
+        sequenceNumber: sequenceNumber
       };
       
       activeCubes.push(cubeData);
+      sequenceNumber++;
+      
       return cubeData;
     }
 
@@ -310,16 +421,18 @@
         if (cubeElement.parentElement) {
           cubeElement.parentElement.removeChild(cubeElement);
         }
-      }, 600);
+      }, 800);
     }
 
     function showNextCube() {
       if (isLoading || allUpdates.length === 0 || activeCubes.length >= CONFIG.maxSimultaneousUpdates) {
         return;
       }
+      
       const update = allUpdates[updateIndex % allUpdates.length];
       updateIndex++;
-      const position = getRandomPosition();
+      
+      const position = getNextPosition();
       createCube(update, position);
     }
 
@@ -391,31 +504,38 @@
               const lowerCaseText = msg.text.toLowerCase();
               return !adminMessages.some(phrase => lowerCaseText.includes(phrase.toLowerCase()));
             })
-            .slice(0, 10);
+            .slice(0, 15);
           
           if (messages.length > 0) {
             allUpdates = messages;
           } else {
             allUpdates = [
-              { text: "Welcome to our updates!" },
+              { text: "News spreading wide..." },
               { text: "Follow @" + CHANNEL_USERNAME },
-              { text: "Latest news coming soon" }
+              { text: "Updates flowing across" },
+              { text: "Wide village stories" },
+              { text: "Horizon of information" },
+              { text: "Landscape of news" },
+              { text: "Spreading updates" }
             ];
           }
         } else {
           allUpdates = [
-            { text: "Welcome to our updates!" },
+            { text: "News spreading wide..." },
             { text: "Follow @" + CHANNEL_USERNAME },
-            { text: "Latest news coming soon" }
+            { text: "Updates flowing across" },
+            { text: "Wide village stories" },
+            { text: "Horizon of information" }
           ];
         }
         
         hideLoading();
       } catch (error) {
         allUpdates = [
-          { text: "Updates loading..." },
-          { text: "Check back soon!" },
-          { text: "Follow @" + CHANNEL_USERNAME }
+          { text: "News cascading wide..." },
+          { text: "Stories across horizon" },
+          { text: "Follow @" + CHANNEL_USERNAME },
+          { text: "Wide updates coming" }
         ];
         hideLoading();
       }

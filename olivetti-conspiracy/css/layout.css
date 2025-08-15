@@ -50,3 +50,30 @@
     z-index: 999;
     cursor: move;
 }
+
+.cubes-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Behind frames but above background */
+    pointer-events: none;
+}
+
+.cubes-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    pointer-events: all;
+}
+
+/* Make sure frames are above cubes */
+.pintori-frame {
+    z-index: 100 !important; /* Higher than cubes */
+}
+
+.top-logo-container {
+    z-index: 101 !important; /* Above everything */
+}
