@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - olivetti 📰</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    
+    <style>
+        /* Content-specific styles only */
+        body, html {
+            overflow-x: hidden;
+        }
+
+        /* Main content container */
+        .content-container {
+            position: relative;
+            z-index: 100;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 150px 40px 100px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Text content styling */
+        .content-text {
+            background: #fff9ed;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 
+                0 0 0 3px #333333,
+                0 0 0 6px #ffffff,
+                0 0 0 9px #666666,
+                0 8px 25px rgba(0, 0, 0, 0.15);
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333333;
+            text-align: justify;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+        }
+
+        /* Responsive adjustments for content */
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 120px 20px 100px 20px;
+            }
+            
+            .content-text {
+                padding: 30px 25px;
+            }
+            
+            .content-text h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background layer with PNG image -->
+    <div class="background-svg"></div>
+    
+    <div class="top-logo-container">
+        <a href="https://reincantamento.xyz/" target="_blank">
+            <img src="img/logo.png" alt="Logo" class="top-logo">
+        </a>
+    </div>
+
+    <!-- Main content -->
+    <div class="content-container">
+        <div class="content-text">
+            <h1>Olivetti</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            
+            <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            
+            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+        </div>
+    </div>
+
+    <!-- Bottom navigation menu -->
+    <div class="bottom-menu">
+        <nav>
+            <a href="about.html" class="active">About</a>
+            <a href="index.html">Index</a>
+            <a href="archive.html">Archive</a>
+        </nav>
+    </div>
+</body>
+</html>

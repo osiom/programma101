@@ -1,0 +1,140 @@
+/* css/base.css */
+/* Reset and base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Disable scrolling */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    position: relative;
+    background-color: #ffffff; /* Vintage cream background */
+}
+
+.background-svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Base layer */
+    background-color: #ffffff; /* Fallback color */
+    background-image: url('../img/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Top center logo with semi-transparent grey background */
+.top-logo-container {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(128, 128, 128); /* Semi-transparent grey */
+    padding: 15px 25px;
+    border-radius: 8px;
+    backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
+}
+
+.top-logo {
+    height: 40px; /* Adjust size as needed */
+    width: auto;
+    display: block;
+    opacity: 1; /* Ensure the white logo is fully visible */
+}
+
+/* Logo link styling */
+.top-logo-container a {
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.top-logo-container a:hover {
+    opacity: 0.8;
+}
+
+/* Add this to the end of css/base.css */
+
+/* Bottom navigation menu */
+.bottom-menu {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(51, 51, 51, 0.9);
+    padding: 15px 30px;
+    border-radius: 8px;
+    backdrop-filter: blur(3px);
+}
+
+.bottom-menu nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.bottom-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+    position: relative;
+}
+
+.bottom-menu a:hover {
+    opacity: 0.7;
+}
+
+.bottom-menu a.active {
+    color: #fdcb6e;
+}
+
+.bottom-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #fdcb6e;
+}
+
+/* Separator between menu items */
+.bottom-menu nav a:not(:last-child)::after {
+    content: '|';
+    position: absolute;
+    right: -15px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+}
+
+.bottom-menu nav a.active:not(:last-child)::after {
+    content: '|';
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive adjustments for bottom menu */
+@media (max-width: 768px) {
+    .bottom-menu {
+        padding: 12px 20px;
+    }
+    
+    .bottom-menu nav {
+        gap: 20px;
+    }
+    
+    .bottom-menu nav a:not(:last-child)::after {
+        right: -10px;
+    }
+}
+
