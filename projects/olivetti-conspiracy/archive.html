@@ -7,121 +7,7 @@
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/base.css">
-    
-    <style>
-        body, html {
-            overflow: visible !important; /* Override the base.css rule */
-            overflow-x: hidden; /* Still prevent horizontal scroll */
-            overflow-y: auto; /* Allow vertical scroll */
-        }
-
-        .archive-title {
-            position: relative;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            font-size: 50px;
-            font-weight: 700;
-            color: #333333;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            text-align: center;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin: 0;
-        }
-
-        .archive-container {
-            padding: 120px 40px 100px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 50;
-        }
-
-        .archive-table {
-            background: #fff9ed;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 
-                0 0 0 3px #333333,
-                0 0 0 6px #ffffff,
-                0 0 0 9px #666666,
-                0 20px 60px rgba(0, 0, 0, 0.3);
-            margin-top: 80px;
-        }
-        
-        .content-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .content-modal-inner {
-            background: #fff9ed;
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .close-content-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 25px;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .view-full-btn {
-            background: #333;
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            cursor: pointer;
-            margin-top: 5px;
-        }
-
-        .view-full-btn:hover {
-            background: #555;
-        }
-
-        @media (max-width: 768px) {
-            .archive-container {
-                padding: 180px 20px 100px 20px;
-            }
-            
-            .archive-table {
-                padding: 20px;
-                overflow-x: auto;
-            }
-            
-            .archive-data {
-                font-size: 12px;
-                min-width: 600px;
-            }
-            
-            .archive-title {
-                font-size: 40px;
-                letter-spacing: 3px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/archive.css">
 </head>
 <body>
     <div class="background-svg"></div>
@@ -147,9 +33,9 @@
     </div>
     <script src="js/archive.js"></script>
 </div>
-<div class="content-modal" id="contentModal" onclick="closeContentModal(event)">
-    <div class="content-modal-inner">
-        <span class="close-content-modal" onclick="closeContentModal()">&times;</span>
+<div class="modal" id="contentModal" onclick="closeContentModal(event)">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeContentModal()">&times;</span>
         <h2 id="modalTitle"></h2>
         <div id="modalContent"></div>
     </div>

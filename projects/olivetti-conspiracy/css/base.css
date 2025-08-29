@@ -121,6 +121,49 @@ body, html {
     color: rgba(255, 255, 255, 0.4);
 }
 
+/* Modal for displaying full content */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #fff9ed;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 0 0 3px #333333,
+        0 0 0 6px #ffffff,
+        0 0 0 9px #666666,
+        0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+    margin-top: 0;
+    color: #333333;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
 /* Responsive adjustments for bottom menu */
 @media (max-width: 768px) {
     .bottom-menu {
