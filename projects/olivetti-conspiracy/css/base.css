@@ -59,8 +59,6 @@ body, html {
     opacity: 0.8;
 }
 
-/* Add this to the end of css/base.css */
-
 /* Bottom navigation menu */
 .bottom-menu {
     position: fixed;

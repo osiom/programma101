@@ -5,29 +5,47 @@ let articles = [];
 let activeCubes = [];
 let currentArticleIndex = 0;
 
-const positions = [
-    { top: '20%', left: '15%' },
-    { top: '25%', left: '75%' },
-    { top: '70%', left: '20%' },
-    { top: '75%', left: '80%' },
-    { top: '35%', left: '10%' },
-    { top: '60%', left: '85%' },
-    { top: '15%', left: '60%' },
-    { top: '80%', left: '40%' },
-    { top: '40%', left: '85%' },
-    { top: '65%', left: '15%' }
-];
+function generateSafePositions() {
+    const cubeSize = window.innerWidth < 768 ? 100 : 140; // Smaller cubes on mobile
+    const margin = 20; // Keep cubes away from edges
+    
+    const positions = [];
+    const cols = Math.floor((window.innerWidth - margin * 2) / (cubeSize + 20));
+    const rows = Math.floor((window.innerHeight - margin * 2) / (cubeSize + 20));
+    
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            positions.push({
+                top: margin + row * (cubeSize + 20) + 'px',
+                left: margin + col * (cubeSize + 20) + 'px'
+            });
+        }
+    }
+    
+    return positions;
+}
+
+let positions = generateSafePositions();
 
 async function loadArticles() {
     try {
         const response = await fetch('data/archive.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
-        articles = await response.json();
+        const data = await response.json();
+        
+        // Validate data structure
+        if (!Array.isArray(data) || data.length === 0) {
+            throw new Error('Invalid or empty articles data');
+        }
+        
+        articles = data;
         shuffleArray(articles);
         startCubeRotation();
     } catch (error) {
         console.error('Error loading articles:', error);
+        // Show a fallback message or hide cube container
+        document.querySelector('.main-title').textContent = 'Content Loading Error';
     }
 }
 
@@ -39,13 +57,28 @@ function shuffleArray(array) {
 }
 
 function getRandomPosition() {
-    return positions[Math.floor(Math.random() * positions.length)];
+    const usedPositions = activeCubes.map(cube => cube.positionIndex);
+    const availableIndices = [];
+    
+    for (let i = 0; i < positions.length; i++) {
+        if (!usedPositions.includes(i)) {
+            availableIndices.push(i);
+        }
+    }
+    
+    if (availableIndices.length === 0) {
+        return { position: positions[0], index: 0 };
+    }
+    
+    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+    return { position: positions[randomIndex], index: randomIndex };
 }
 
 function createCube(article) {
     const container = document.createElement('div');
     const colorClass = colors[Math.floor(Math.random() * colors.length)];
-    const position = getRandomPosition();
+    const positionData = getRandomPosition();
+    const position = positionData.position;
     
     container.className = `cube-container ${colorClass}`;
     container.style.top = position.top;
@@ -77,7 +110,8 @@ function createCube(article) {
     activeCubes.push({
         element: container,
         timeout: removeTimeout,
-        article: article
+        article: article,
+        positionIndex: positionData.index
     });
 }
 
@@ -143,3 +177,32 @@ document.addEventListener('click', function(e) {
     const modal = document.getElementById('articleModal');
     if (e.target === modal) closeModal();
 });
+
+// Handle window resize to regenerate positions
+window.addEventListener('resize', debounce(() => {
+    positions = generateSafePositions();
+    
+    // Update existing cubes with new positions if needed
+    activeCubes.forEach(cube => {
+        if (cube.element.parentElement) {
+            const newPositionData = getRandomPosition();
+            const newPosition = newPositionData.position;
+            cube.element.style.top = newPosition.top;
+            cube.element.style.left = newPosition.left;
+            cube.positionIndex = newPositionData.index;
+        }
+    });
+}, 300));
+
+// Debounce function to prevent too many resize calls
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
