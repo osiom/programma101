@@ -1,58 +1,96 @@
+/* Updated about.css */
 /* Content-specific styles only */
 body, html {
     overflow-x: hidden;
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: auto;
 }
 
 /* Main content container */
 .content-container {
     position: relative;
     z-index: 100;
-    max-width: 800px;
+    max-width: 1200px; /* Made much wider */
     margin: 0 auto;
-    padding: 150px 40px 100px 40px;
-    min-height: calc(100vh - 200px); /* Leave space for navigation */
+    padding: 170px 60px 120px 60px; /* Reduced top/bottom padding */
+    height: calc(100vh - 120px); /* Fit within viewport */
+    display: flex;
+    align-items: center; /* Center content vertically */
 }
 
 /* Text content styling */
 .content-text {
-    background: #dadada;
-    padding: 40px 50px;
+    background: rgba(218, 218, 218, 0.95); /* Slightly more transparent */
+    padding: 10px 60px; /* Increased horizontal padding */
     border-radius: 12px;
     box-shadow: 
         0 0 0 3px #333333,
         0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 8px 25px rgba(0, 0, 0, 0.15);
-    line-height: 1.8;
-    font-size: 16px;
+    line-height: 1.7; /* Slightly tighter line height */
+    font-size: 15px; /* Slightly smaller font */
     color: #333333;
     text-align: justify;
     backdrop-filter: blur(5px);
+    width: 100%;
+    max-height: 70vh; /* Limit height */
+    overflow-y: auto; /* Add scroll if needed */
 }
 
 .content-text h1 {
-    font-size: 28px;
+    font-size: 26px; /* Slightly smaller */
     font-weight: 700;
     color: #222222;
-    margin-bottom: 30px;
+    margin-bottom: 25px; /* Reduced margin */
     text-align: center;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .content-text p {
-    margin-bottom: 20px;
+    margin-bottom: 18px; /* Reduced margin */
+}
+
+.content-text ul {
+    margin-bottom: 18px;
+}
+
+.content-text li {
+    margin-bottom: 12px;
+}
+
+/* Custom scrollbar for content */
+.content-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content-text::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.content-text::-webkit-scrollbar-thumb {
+    background: rgba(51, 51, 51, 0.6);
+    border-radius: 3px;
+}
+
+.content-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(51, 51, 51, 0.8);
 }
 
 /* Responsive adjustments for content */
 @media (max-width: 768px) {
     .content-container {
         padding: 120px 20px 100px 20px;
+        max-width: 100%;
+        height: auto;
+        min-height: calc(100vh - 200px);
     }
     
     .content-text {
         padding: 30px 25px;
+        max-height: none;
+        overflow-y: visible;
     }
     
     .content-text h1 {
