@@ -20,13 +20,12 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Base layer */
-    background-color: #ffffff; /* Fallback color */
+    z-index: 1;
+    background-color: #ffffff;
     background-image: url('../img/background.jpg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 /* Top center logo with semi-transparent grey background */
@@ -166,16 +165,22 @@ body, html {
 
 /* Responsive adjustments for bottom menu */
 @media (max-width: 768px) {
-    .bottom-menu {
-        padding: 12px 20px;
-    }
-    
-    .bottom-menu nav {
-        gap: 20px;
-    }
-    
-    .bottom-menu nav a:not(:last-child)::after {
-        right: -10px;
+    .background-svg {
+        background-image: url('../img/background-mobile.jpg'); /* Portrait version */
+        background-attachment: scroll; /* Better mobile performance */
     }
 }
 
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .background-svg {
+        background-position: center center;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+    .background-svg {
+        background-attachment: fixed;
+    }
+}
