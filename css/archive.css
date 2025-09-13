@@ -60,8 +60,10 @@ body, html {
 @media (max-width: 768px) {
     .background-svg {
         background-image: url('../img/background.jpg');
-        background-position: center center;
+        background-attachment: scroll;
         background-size: cover;
+        background-position: center 30%; /* Start here - adjust as needed */
+        background-repeat: no-repeat;
     }
 }
 
