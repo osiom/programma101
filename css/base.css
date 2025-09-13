@@ -22,8 +22,8 @@ body, html {
     height: 100%;
     z-index: 1; /* Base layer */
     background-color: #ffffff; /* Fallback color */
-    background-image: url('../img/background.png');
-    background-size: cover;
+    background-image: url('../img/background.jpg');
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -32,18 +32,18 @@ body, html {
 /* Top center logo with semi-transparent grey background */
 .top-logo-container {
     position: fixed;
-    top: 30px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
     background: rgba(128, 128, 128); /* Semi-transparent grey */
-    padding: 15px 25px;
-    border-radius: 8px;
+    padding: 10px 15px;
+    border-radius: 4px;
     backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
 }
 
 .top-logo {
-    height: 40px; /* Adjust size as needed */
+    height: 25px; /* Adjust size as needed */
     width: auto;
     display: block;
     opacity: 1; /* Ensure the white logo is fully visible */
@@ -94,7 +94,7 @@ body, html {
 }
 
 .bottom-menu a.active {
-    color: #fdcb6e;
+    color: #dadada;
 }
 
 .bottom-menu a.active::after {
@@ -104,7 +104,7 @@ body, html {
     left: 0;
     right: 0;
     height: 2px;
-    background: #fdcb6e;
+    background: #dadada;
 }
 
 /* Separator between menu items */
@@ -137,7 +137,7 @@ body, html {
 }
 
 .modal-content {
-    background: #fff9ed;
+    background: #dadada;
     padding: 40px;
     border-radius: 12px;
     max-width: 800px;

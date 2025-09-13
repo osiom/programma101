@@ -8,6 +8,33 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/about.css">
+    
+    <style>
+        /* Override styles to make it fit on one page */
+        .content-container {
+            max-height: calc(100vh - 200px); /* Adjust based on your header/footer heights */
+            overflow-y: auto;
+            padding-right: 10px; /* Add some padding for scrollbar */
+        }
+        
+        /* Optional: Style the scrollbar */
+        .content-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .content-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .content-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        .content-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
 </head>
 <body>
     <!-- Background layer with PNG image -->
@@ -23,13 +50,18 @@
     <div class="content-container">
         <div class="content-text">
             <h1>Olivetti</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>History unfolds as a non-linear process, rich with bifurcations and untaken paths. Yet we always find ourselves bound to a single trajectory. To tell a story, to weave a conspiracy, is to slip back into those forgotten possibilities, to walk the roads that history left behind.</p>
             
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            <p><b>PROGRAMMA 101</b> - REINCANTAMENTO's installation for MFRU - moves between narrative and factuality, uncovering the hidden fragments buried at the origin of the digital present. The work explores the unique experience of <em>Olivetti,</em> the most successful 20th century Italian technological company. An almost utopian model of technical and social development, Olivetti's experience was rooted in humanistic principles and social solidarity, with its roots in Catholic heresy and anti-fascist resistance. A project that peaked in the early 1960s until a <em>very</em> abrupt ending.</p>
             
-            <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            <p>Infused with the aesthetics and logic of conspiracy, PROGRAMMA 101 invites viewers to navigate hidden connections and obscured truths about Italy's Cold War trajectory, the influence of the US Empire, and its impact on the current Western technological landscape. Rather than presenting a singular truth, the work engages with an evidentiary paradigm, shifting between absences, suggestions, and fleeting impressions. Its truth is not a whole, but a fragmented mosaic to be reassembled.</p>
             
-            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+            <p>The work is a multi-layered installation composed of three core elements:</p>
+            
+            <ul>
+                <li>Two videos play on screens facing each other, presenting the story from two differing perspectives, but their interconnection is deliberately indirect. The sound design amplifies the sense of fragmentation and dispersion.</li>
+                <li>A terminal, positioned between the screens, receive cryptic messages and prompts coming from PROGRAMMA 101 archive. Visitors receive hints, interpretations, and further provocations to interpret the story.</li>
+            </ul>
         </div>
     </div>
 
