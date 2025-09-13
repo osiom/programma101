@@ -112,4 +112,17 @@ body, html {
         background-position: center 30%; /* Start here - adjust as needed */
         background-repeat: no-repeat;
     }
+    
+    .content-container {
+        padding: 120px 20px 100px 20px;
+        max-width: 100%;
+        height: auto;
+        min-height: calc(100vh - 200px);
+    }
+    
+    .content-text {
+        padding: 30px 25px;
+        max-height: none;
+        overflow-y: visible;
+    }
 }
