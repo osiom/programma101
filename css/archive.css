@@ -7,7 +7,7 @@ body, html {
 
 .archive-title {
     position: relative;
-    top: 20%;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -23,7 +23,7 @@ body, html {
 }
 
 .archive-container {
-    padding: 120px 40px 100px 40px;
+    padding: 80px 40px 100px 40px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;

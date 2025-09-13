@@ -5,6 +5,31 @@ body, html {
     overflow-y: auto;
 }
 
+.about-title {
+    position: relative;
+    top: 9%; /* Same as archive-title, adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    font-size: 50px;
+    font-weight: 700;
+    color: #333333;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+.title-container {
+    padding: 80px 40px 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 50;
+}
+
 /* Main content container */
 .content-container {
     position: relative;
