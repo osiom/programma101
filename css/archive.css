@@ -62,12 +62,10 @@ body, html {
         background-image: url('../img/background.jpg');
         background-attachment: scroll;
         background-size: cover;
-        background-position: center 30%; /* Start here - adjust as needed */
+        background-position: center 30%;
         background-repeat: no-repeat;
     }
-}
-
-@media (max-width: 768px) {
+    
     .archive-container {
         padding: 80px 20px 100px 20px;
     }
@@ -83,7 +81,7 @@ body, html {
     }
     
     .archive-title {
-        top: 10%;
+        top: -5%; /* Negative value to move it much higher */
         font-size: 40px;
         letter-spacing: 3px;
     }
