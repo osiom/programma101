@@ -163,11 +163,11 @@ body, html {
     cursor: pointer;
 }
 
-/* Responsive adjustments for bottom menu */
 @media (max-width: 768px) {
     .background-svg {
-        background-image: url('../img/background-mobile.jpg'); /* Portrait version */
-        background-attachment: scroll; /* Better mobile performance */
+        background-image: url('../img/background.jpg');
+        background-position: center center;
+        background-size: cover;
     }
 }
 

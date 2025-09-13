@@ -80,20 +80,9 @@ body, html {
 
 /* Responsive adjustments for content */
 @media (max-width: 768px) {
-    .content-container {
-        padding: 120px 20px 100px 20px;
-        max-width: 100%;
-        height: auto;
-        min-height: calc(100vh - 200px);
-    }
-    
-    .content-text {
-        padding: 30px 25px;
-        max-height: none;
-        overflow-y: visible;
-    }
-    
-    .content-text h1 {
-        font-size: 24px;
+    .background-svg {
+        background-image: url('../img/background.jpg');
+        background-position: center center;
+        background-size: cover;
     }
 }
