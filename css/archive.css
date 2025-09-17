@@ -7,7 +7,7 @@ body, html {
 
 .archive-title {
     position: relative;
-    top: 5%;
+    top: 10%; /* Standardized with about-title */
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -17,13 +17,13 @@ body, html {
     letter-spacing: 6px;
     text-transform: uppercase;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Intel One Mono', monospace;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     margin: 0;
 }
 
 .archive-container {
-    padding: 80px 40px 100px 40px;
+    padding: 80px 40px 0 40px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -39,7 +39,7 @@ body, html {
         0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 20px 60px rgba(0, 0, 0, 0.3);
-    margin-top: 80px;
+    margin-top: 100px; /* Standardized with about content */
 }
 
 .view-full-btn {
@@ -59,18 +59,25 @@ body, html {
 
 @media (max-width: 768px) {
     .background-svg {
-        background-image: url('../img/background.jpg');
+        background-image: url('../img/mobile.jpg');
         background-attachment: scroll;
-        background-size: cover;
-        background-position: center 30%;
+        background-size: contain;
+        background-position: top center;
         background-repeat: no-repeat;
     }
     
+    .archive-title {
+        top: 5%; /* Consistent positioning on mobile */
+        font-size: 40px;
+        letter-spacing: 3px;
+    }
+    
     .archive-container {
-        padding: 80px 20px 100px 20px;
+        padding: 60px 20px 0 20px;
     }
     
     .archive-table {
+        margin-top: 80px;
         padding: 20px;
         overflow-x: auto;
     }
@@ -78,11 +85,5 @@ body, html {
     .archive-data {
         font-size: 12px;
         min-width: 600px;
-    }
-    
-    .archive-title {
-        top: -5%; /* Negative value to move it much higher */
-        font-size: 40px;
-        letter-spacing: 3px;
     }
 }

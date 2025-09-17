@@ -7,23 +7,23 @@ body, html {
 
 .about-title {
     position: relative;
-    top: 9%; /* Same as archive-title, adjust as needed */
+    top: 10%; /* Standardized with archive-title */
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
     font-size: 50px;
     font-weight: 700;
-    color: #333333;
+    color: #333333; 
     letter-spacing: 6px;
     text-transform: uppercase;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Intel One Mono', monospace;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     margin: 0;
 }
 
-.title-container {
-    padding: 80px 40px 100px 40px;
+.about-container {
+    padding: 80px 40px 0 40px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -34,9 +34,9 @@ body, html {
 .content-container {
     position: relative;
     z-index: 100;
-    max-width: 1200px; /* Made much wider */
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 170px 60px 120px 60px; /* Reduced top/bottom padding */
+    padding: 100px 40px 120px 40px; /* Standardized with archive */
     height: calc(100vh - 120px); /* Fit within viewport */
     display: flex;
     align-items: center; /* Center content vertically */
@@ -106,15 +106,25 @@ body, html {
 /* Responsive adjustments for content */
 @media (max-width: 768px) {
     .background-svg {
-        background-image: url('../img/background.jpg');
+        background-image: url('../img/mobile.jpg');
         background-attachment: scroll;
-        background-size: cover;
-        background-position: center 30%; /* Start here - adjust as needed */
+        background-size: contain;
+        background-position: top center;
         background-repeat: no-repeat;
     }
     
+    .about-title {
+        top: 5%; /* Consistent positioning on mobile */
+        font-size: 40px;
+        letter-spacing: 3px;
+    }
+    
+    .about-container {
+        padding: 60px 20px 0 20px;
+    }
+    
     .content-container {
-        padding: 120px 20px 100px 20px;
+        padding: 80px 20px 100px 20px;
         max-width: 100%;
         height: auto;
         min-height: calc(100vh - 200px);

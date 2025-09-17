@@ -1,12 +1,12 @@
 console.log('main.js loaded successfully');
 
-const colors = ['color-red', 'color-blue', 'color-yellow', 'color-green'];
+const colors = ['color-black'];
 let articles = [];
 let activeCubes = [];
 let currentArticleIndex = 0;
 
 function generateSafePositions() {
-    const cubeSize = window.innerWidth < 768 ? 100 : 140; // Smaller cubes on mobile
+    const cubeSize = window.innerWidth < 768 ? 70 : 140; // Smaller cubes on mobile
     const margin = 20; // Keep cubes away from edges
     
     const positions = [];

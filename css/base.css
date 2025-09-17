@@ -9,9 +9,17 @@ body, html {
     padding: 0;
     height: 100%;
     overflow: hidden; /* Disable scrolling */
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Intel One Mono', monospace;
+    font-weight: 500; /* Medium weight for general text */
+    text-transform: lowercase; /* All text lowercase by default */
     position: relative;
     background-color: #ffffff; /* Vintage cream background */
+}
+
+/* Make h1 elements bold and uppercase */
+h1 {
+    font-weight: 700; /* Bold for h1 */
+    text-transform: uppercase;
 }
 
 .background-svg {
@@ -22,41 +30,12 @@ body, html {
     height: 100%;
     z-index: 1;
     background-color: #ffffff;
-    background-image: url('../img/background.jpg');
-    background-size: cover;
-    background-position: center;
+    background-image: url('../img/desktop.jpg');
+    background-size: contain;
+    background-position: top center;
     background-repeat: no-repeat;
 }
 
-/* Top center logo with semi-transparent grey background */
-.top-logo-container {
-    position: fixed;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background: rgba(128, 128, 128); /* Semi-transparent grey */
-    padding: 10px 15px;
-    border-radius: 4px;
-    backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
-}
-
-.top-logo {
-    height: 25px; /* Adjust size as needed */
-    width: auto;
-    display: block;
-    opacity: 1; /* Ensure the white logo is fully visible */
-}
-
-/* Logo link styling */
-.top-logo-container a {
-    display: block;
-    transition: opacity 0.3s ease;
-}
-
-.top-logo-container a:hover {
-    opacity: 0.8;
-}
 
 /* Bottom navigation menu */
 .bottom-menu {
@@ -165,10 +144,10 @@ body, html {
 
 @media (max-width: 768px) {
     .background-svg {
-        background-image: url('../img/background.jpg');
+        background-image: url('../img/mobile.jpg');
         background-attachment: scroll;
-        background-size: cover;
-        background-position: center 30%; /* Start here - adjust as needed */
+        background-size: contain;
+        background-position: top center;
         background-repeat: no-repeat;
     }
 }
@@ -176,7 +155,7 @@ body, html {
 /* Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
     .background-svg {
-        background-position: center center;
+        background-position: top center;
     }
 }
 

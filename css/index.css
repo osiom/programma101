@@ -11,7 +11,7 @@
     letter-spacing: 8px;
     text-transform: uppercase;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Intel One Mono', monospace;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -51,8 +51,8 @@
 
 .cube-face {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,41 +71,19 @@
     color: #5a5a5a;
 }
 
-.front { transform: translateZ(50px); }
-.back { transform: rotateY(180deg) translateZ(50px); }
-.right { transform: rotateY(90deg) translateZ(50px); }
-.left { transform: rotateY(-90deg) translateZ(50px); }
-.top { transform: rotateX(90deg) translateZ(50px); }
-.bottom { transform: rotateX(-90deg) translateZ(50px); }
+.front { transform: translateZ(70px); }
+.back { transform: rotateY(180deg) translateZ(70px); }
+.right { transform: rotateY(90deg) translateZ(70px); }
+.left { transform: rotateY(-90deg) translateZ(70px); }
+.top { transform: rotateX(90deg) translateZ(70px); }
+.bottom { transform: rotateX(-90deg) translateZ(70px); }
 
-/* Color classes for cubes */
-.color-red .front { background: #d63031; color: white; font-weight: 700; }
-.color-red .back { background: #d63031; color: white; font-weight: 700; }
-.color-red .left { background: #d63031; color: white; font-weight: 700; }
-.color-red .right { background: #d63031; color: white; font-weight: 700; }
-.color-red .top { background: #d63031; color: white; font-weight: 700; }
-.color-red .bottom { background: #d63031; color: white; font-weight: 700; }
-
-.color-blue .front { background: #0984e3; color: white; font-weight: 700; }
-.color-blue .back { background: #0984e3; color: white; font-weight: 700; }
-.color-blue .left { background: #0984e3; color: white; font-weight: 700; }
-.color-blue .right { background: #0984e3; color: white; font-weight: 700; }
-.color-blue .top { background: #0984e3; color: white; font-weight: 700; }
-.color-blue .bottom { background: #0984e3; color: white; font-weight: 700; }
-
-.color-yellow .front { background: #fdcb6e; color: #2d3436; font-weight: 700; }
-.color-yellow .back { background: #fdcb6e; color: #2d3436; font-weight: 700; }
-.color-yellow .left { background: #fdcb6e; color: #2d3436; font-weight: 700; }
-.color-yellow .right { background: #fdcb6e; color: #2d3436; font-weight: 700; }
-.color-yellow .top { background: #fdcb6e; color: #2d3436; font-weight: 700; }
-.color-yellow .bottom { background: #fdcb6e; color: #2d3436; font-weight: 700; }
-
-.color-green .front { background: #00b894; color: white; font-weight: 700; }
-.color-green .back { background: #00b894; color: white; font-weight: 700; }
-.color-green .left { background: #00b894; color: white; font-weight: 700; }
-.color-green .right { background: #00b894; color: white; font-weight: 700; }
-.color-green .top { background: #00b894; color: white; font-weight: 700; }
-.color-green .bottom { background: #00b894; color: white; font-weight: 700; }
+.color-black .front { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
+.color-black .back { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
+.color-black .left { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
+.color-black .right { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
+.color-black .top { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
+.color-black .bottom { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -124,20 +102,20 @@
 
 @media (max-width: 768px) {
     .cube {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
     }
     
     .cube-face {
-        width: 100px;
-        height: 100px;
-        font-size: 12px;
+        width: 70px;
+        height: 70px;
+        font-size: 11px;
     }
     
-    .front { transform: translateZ(50px); }
-    .back { transform: rotateY(180deg) translateZ(50px); }
-    .right { transform: rotateY(90deg) translateZ(50px); }
-    .left { transform: rotateY(-90deg) translateZ(50px); }
-    .top { transform: rotateX(90deg) translateZ(50px); }
-    .bottom { transform: rotateX(-90deg) translateZ(50px); }
+    .front { transform: translateZ(35px); }
+    .back { transform: rotateY(180deg) translateZ(35px); }
+    .right { transform: rotateY(90deg) translateZ(35px); }
+    .left { transform: rotateY(-90deg) translateZ(35px); }
+    .top { transform: rotateX(90deg) translateZ(35px); }
+    .bottom { transform: rotateX(-90deg) translateZ(35px); }
 }
