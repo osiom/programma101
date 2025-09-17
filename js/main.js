@@ -1,6 +1,7 @@
-console.log('main.js loaded successfully');
+// Main JavaScript for cube animation and interaction
 
-const colors = ['color-black'];
+// Using a single color theme for cubes
+const cubeColorClass = 'color-black';
 let articles = [];
 let activeCubes = [];
 let currentArticleIndex = 0;
@@ -43,9 +44,9 @@ async function loadArticles() {
         shuffleArray(articles);
         startCubeRotation();
     } catch (error) {
-        console.error('Error loading articles:', error);
-        // Show a fallback message or hide cube container
-        document.querySelector('.main-title').textContent = 'Content Loading Error';
+        // Show a fallback message if there's an error loading content
+        const mainTitle = document.querySelector('.main-title');
+        if (mainTitle) mainTitle.textContent = 'Content Loading Error';
     }
 }
 
@@ -76,11 +77,10 @@ function getRandomPosition() {
 
 function createCube(article) {
     const container = document.createElement('div');
-    const colorClass = colors[Math.floor(Math.random() * colors.length)];
     const positionData = getRandomPosition();
     const position = positionData.position;
     
-    container.className = `cube-container ${colorClass}`;
+    container.className = `cube-container ${cubeColorClass}`;
     container.style.top = position.top;
     container.style.left = position.left;
     container.onclick = () => openModal(article);

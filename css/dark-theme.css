@@ -1,0 +1,139 @@
+/* Dark theme styles for about and archive pages */
+
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Inverted background */
+body.dark-theme .background-svg {
+    filter: invert(1) brightness(0.8) contrast(1.1);
+}
+
+/* Logo container */
+body.dark-theme .top-logo-container {
+    background: rgba(60, 60, 60, 0.8);
+}
+
+/* Keep the logo image unchanged */
+
+/* Dark mode content boxes */
+body.dark-theme .content-text,
+body.dark-theme .archive-table,
+body.dark-theme .modal-content {
+    background: rgba(45, 45, 45, 0.95);
+    color: #e0e0e0;
+    box-shadow: 
+        0 0 0 3px #b0b0b0,
+        0 0 0 6px #202020,
+        0 0 0 9px #999999,
+        0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Invert headings */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+    color: #ffffff;
+}
+
+/* Inverted navigation */
+body.dark-theme .bottom-menu {
+    background: rgba(200, 200, 200, 0.9);
+}
+
+body.dark-theme .bottom-menu a {
+    color: #121212;
+}
+
+body.dark-theme .bottom-menu a.active {
+    color: #000000;
+}
+
+body.dark-theme .bottom-menu a.active::after {
+    background: #000000;
+}
+
+body.dark-theme .bottom-menu nav a:not(:last-child)::after {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+/* Table styles for archive */
+body.dark-theme .archive-data th {
+    background-color: #e0e0e0;
+    color: #121212;
+}
+
+body.dark-theme .archive-data td {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-theme .table-reference {
+    color: #b0b0b0;
+}
+
+/* Button styling */
+body.dark-theme .view-full-btn,
+body.dark-theme .view-content-btn {
+    background: #e0e0e0;
+    color: #121212;
+}
+
+body.dark-theme .view-full-btn:hover,
+body.dark-theme .view-content-btn:hover {
+    background: #ffffff;
+}
+
+/* Card styling */
+body.dark-theme .archive-card {
+    background: #2a2a2a;
+}
+
+body.dark-theme .card-id {
+    color: #999;
+}
+
+/* References */
+body.dark-theme .reference-quote {
+    color: #a0a0a0;
+    border-top: 1px solid #444;
+}
+
+/* Modal specific styling */
+body.dark-theme .modal {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark-theme #modalContent,
+body.dark-theme #contentModal .modal-content {
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+body.dark-theme .close-modal {
+    color: #ffffff;
+}
+
+/* Flash transition effect */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.flash-transition {
+    animation: flash-effect 0.5s ease-out;
+}
+
+@keyframes flash-effect {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}

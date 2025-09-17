@@ -104,8 +104,6 @@ function openArticleModal(id) {
     const modal = document.getElementById('contentModal');
     modal.style.display = 'flex';
     
-    // For debugging
-    console.log('Modal opened for article:', article.id);
 }
 
 function closeContentModal(event) {
@@ -113,7 +111,6 @@ function closeContentModal(event) {
     
     // If there's no event, or if the click was on the modal backdrop or close button
     if (!event || event.target === modal || event.target.classList.contains('close-modal')) {
-        console.log('Closing modal');
         modal.style.display = 'none';
     }
 }

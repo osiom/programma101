@@ -50,6 +50,13 @@
     line-height: 1.1;
 }
 
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+}
+
 .cube {
     width: 140px;
     height: 140px;
@@ -117,16 +124,8 @@
         font-size: 60px;
         letter-spacing: 4px;
     }
-}
-
-@media (max-width: 480px) {
-    .main-title {
-        font-size: 40px;
-        letter-spacing: 2px;
-    }
-}
-
-@media (max-width: 768px) {
+    
+    /* Mobile cube sizing */
     .cube {
         width: 90px;
         height: 90px;

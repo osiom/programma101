@@ -18,7 +18,7 @@ Our work experiments with multimodal formats combining text, image, sound, and i
 
 Created for **MFRU31** - the 2025 edition of the festival under the theme **"Esoteric Ecotechnics. Irrational Computation and Conspiratorial Networking"**.
 
-This year's edition will thematically focus on the underground and secret connections between media technologies, users, knowledge and information circulation  - making it the perfect context to investigate one of computing history's most suppressed stories.
+This year's edition thematically focuses on the underground and secret connections between media technologies, users, knowledge and information circulation - making it the perfect context to investigate one of computing history's most suppressed stories.
 
 **Festival**: [mfru.org](https://www.mfru.org/)
 
@@ -28,13 +28,23 @@ This year's edition will thematically focus on the underground and secret connec
 
 ### The Conspiracy
 
-In 1965, the Olivetti Programma 101 was presented at the New York World's Fair as the world's first desktop computer . NASA bought a number of P101s, which were used by engineers working on the 1969 Apollo 11 moon landing . Steve Wozniak and Steve Jobs were inspired by the simplicity and design philosophy of the P101 for the design of the Apple I .
+> "All there is in me is the future." - Adriano Olivetti
+
+In 1965, the Olivetti Programma 101 was presented at the New York World's Fair as the world's first desktop computer. NASA bought several units for the 1969 Apollo 11 moon landing mission. Steve Wozniak and Steve Jobs drew inspiration from its design philosophy when creating the Apple I.
 
 Yet this Italian masterpiece has been largely erased from computing history.
 
-The theory: Adriano Olivetti died suddenly of a heart attack at fifty-eight on a train headed for Switzerland in 1960 . Eighteen months later, his brilliant young engineer Mario Tchou was killed in a suspicious car crash . CIA director Allen Dulles, who favored "a double agent ready for action, not an ambitious, left-leaning industrialist"  saw the socialist Olivetti as a threat, especially since Olivetti wasn't reluctant to sell the technology to Russia and China .
+The conspiracy runs deeper than previously thought:
 
-The forced sale of Olivetti's electronics division to General Electric, the systematic acquisition of patents by IBM, and the rewriting of computer history to minimize Italian contributions all point to a coordinated effort to eliminate Italian technological sovereignty during the Cold War.
+- **CIA Infiltration**: A CIA interoffice memo dated December 5, 1957 reveals Olivetti was being monitored by a spy within his inner circle, someone who "knows Olivetti well, and has studied the Communita movement at first hand." Allen Dulles, CIA Director, favored "a double agent ready for action, not an ambitious, left-leaning industrialist."
+
+- **Suspicious Timing**: Adriano Olivetti died suddenly at 58 on a train to Switzerland in February 1960. Curiously, the Olivetti-Underwood company was scheduled to make its Milan bourse debut the very next week, and Adriano was making final arrangements for it the day he died.
+
+- **Market Disruption**: Olivetti had pioneered the first all-transistorized mainframe computer in 1959, directly challenging IBM's market dominance. Their machines were sold in 117 countries with a distinctive "Tocco Olivetti" (Olivetti touch) that combined technological innovation with elegant design.
+
+- **Cold War Politics**: By 1959, Adriano was exploring new markets behind the Iron Curtain, including the USSR and Communist China - a move described by a diplomat as "the most audacious and dangerous ambition of all" during the height of Cold War tensions.
+
+- **Systematic Dismantling**: Following Adriano's death and engineer Mario Tchou's suspicious car accident 18 months later, the U.S. government immediately hit the Olivetti-Underwood merger with an antitrust suit. Eventually, a "rescue group" headed by Fiat acquired the company at bargain prices in what the Financial Times described as turning what was "a social and artistic experiment" into "just a business."
 
 ### The Ritual Dimension
 
@@ -46,9 +56,12 @@ Following REINCANTAMENTO's approach to **rituality in digital spaces**, the arch
 
 ## The Questions We Investigate
 
-- And then what happened? Why don't we all own an Olivetti laptop today? Some say it's the nature of the market, some say that it is a spy story 
+In the words of Pier Paolo Pasolini: "Intellectual courage for truth and political practice are two irreconcilable things in Italy." We ask:
+
 - How did American corporate and intelligence interests systematically eliminate Italian computing innovation?
 - What role did the CIA play in the mysterious deaths surrounding Olivetti?
+- Why was Olivetti's vision of technology as a social good so threatening to established powers?
+- What would our technological landscape look like today if the Programma 101 had been allowed to flourish?
 - How many other technological revolutions have been suppressed or stolen?
 
 ## Contributing to the Archive
