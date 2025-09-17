@@ -22,6 +22,36 @@ h1 {
     text-transform: uppercase;
 }
 
+/* Top center logo with semi-transparent grey background */
+.top-logo-container {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(128, 128, 128); /* Semi-transparent grey */
+    padding: 10px 15px;
+    border-radius: 4px;
+    backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
+}
+
+.top-logo {
+    height: 25px; /* Adjust size as needed */
+    width: auto;
+    display: block;
+    opacity: 1; /* Ensure the white logo is fully visible */
+}
+
+/* Logo link styling */
+.top-logo-container a {
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.top-logo-container a:hover {
+    opacity: 0.8;
+}
+
 .background-svg {
     position: fixed;
     top: 0;
@@ -30,9 +60,9 @@ h1 {
     height: 100%;
     z-index: 1;
     background-color: #ffffff;
-    background-image: url('../img/desktop.jpg');
-    background-size: contain;
-    background-position: top center;
+    background-image: url('../img/desktop.png');
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
 }
 
@@ -133,6 +163,15 @@ h1 {
     color: #333333;
 }
 
+.reference-quote {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #505050;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #aaaaaa;
+}
+
 .close-modal {
     position: absolute;
     top: 20px;
@@ -144,10 +183,10 @@ h1 {
 
 @media (max-width: 768px) {
     .background-svg {
-        background-image: url('../img/mobile.jpg');
+        background-image: url('../img/mobile.png');
         background-attachment: scroll;
-        background-size: contain;
-        background-position: top center;
+        background-size: cover;
+        background-position: center center;
         background-repeat: no-repeat;
     }
 }
@@ -155,7 +194,7 @@ h1 {
 /* Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
     .background-svg {
-        background-position: top center;
+        background-position: center center;
     }
 }
 

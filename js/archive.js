@@ -34,7 +34,6 @@ function displayTableView(articles, container) {
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Description</th>
                     <th>Content</th>
                     <th>Reference</th>
                 </tr>
@@ -48,12 +47,11 @@ function displayTableView(articles, container) {
             <tr>
                 <td>${article.id}</td>
                 <td>${article.title}</td>
-                <td>${article.description}</td>
                 <td>
                     ${shortContent}
-                    ${article.content.length > 100 ? `<br><button class="view-full-btn" onclick="showFullContent('${article.id}', \`${article.title}\`, \`${article.content}\`)")}', '${article.content.replace(/'/g, "\\'")}')" >View Full</button>` : ''}
+                    ${article.content.length > 100 ? `<br><button class="view-full-btn" onclick="openArticleModal('${article.id}')">View Full</button>` : ''}
                 </td>
-                <td>${article.reference ? `<a href="${article.reference}" target="_blank">Link</a>` : 'No link'}</td>
+                <td><span class="table-reference">${article.reference}</span></td>
             </tr>
         `;
     });
@@ -70,14 +68,14 @@ function displayCardsView(articles, container) {
     let cardsHTML = '<div class="archive-cards">';
     
     articles.forEach(article => {
+        const shortContent = article.content.length > 60 ? article.content.substring(0, 60) + '...' : article.content;
         cardsHTML += `
             <div class="archive-card">
                 <div class="card-id">ID: ${article.id}</div>
                 <h3 class="card-title">${article.title}</h3>
-                <p class="card-description">${article.description}</p>
+                <p class="card-content">${shortContent}</p>
                 <div class="card-actions">
-                    <button class="view-content-btn" onclick="showFullContent('${article.id}', \`${article.title}\`, \`${article.content}\`)">View Content</button>
-                    ${article.reference ? `<a href="${article.reference}" target="_blank" class="reference-link">Reference</a>` : ''}
+                    <button class="view-content-btn" onclick="openArticleModal('${article.id}')">View Content</button>
                 </div>
             </div>
         `;
@@ -87,15 +85,35 @@ function displayCardsView(articles, container) {
     container.innerHTML = cardsHTML;
 }
 
-function showFullContent(id, title, content) {
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalContent').textContent = content;
-    document.getElementById('contentModal').style.display = 'flex';
+function openArticleModal(id) {
+    const article = articles.find(a => a.id === id);
+    if (!article) {
+        console.error('Article not found with ID:', id);
+        return;
+    }
+    
+    document.getElementById('modalTitle').textContent = article.title;
+    
+    const modalContent = document.getElementById('modalContent');
+    modalContent.innerHTML = `
+        <div>${article.content}</div>
+        ${article.reference ? `<p class="reference-quote">${article.reference}</p>` : ''}
+    `;
+    
+    // Show the modal
+    const modal = document.getElementById('contentModal');
+    modal.style.display = 'flex';
+    
+    // For debugging
+    console.log('Modal opened for article:', article.id);
 }
 
 function closeContentModal(event) {
     const modal = document.getElementById('contentModal');
-    if (!event || event.target === modal || event.target.classList.contains('close-content-modal')) {
+    
+    // If there's no event, or if the click was on the modal backdrop or close button
+    if (!event || event.target === modal || event.target.classList.contains('close-modal')) {
+        console.log('Closing modal');
         modal.style.display = 'none';
     }
 }

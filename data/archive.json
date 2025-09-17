@@ -1,16 +1,14 @@
 [
   {
-    "id": "valid_id",
-    "title": "title",
-    "description": "description",
-    "content": "text",
-    "reference": "link"
+    "id": "01",
+    "title": "In me non c'è che futuro",
+    "content": "\"All there is in me is the future.\" - It is a statement that many have attributed to Adriano Olivetti to emphasize his proverbial impatience, his constant movement, and his habit of always being in the car. What futurability is still to be uncovered in this story? Another digital society was possible, but then it ceased to seem possible. In between: the occult and non-occult intervention of certain power at play in Italy, and in Europe. Franco Berardi: \"Power is the selection and imposition of one possibility among many, and at the same time, it is the exclusion (and invisibilization) of many other possibilities.\"",
+    "reference": "Berardi, Franco \"Bifo.\" Futurability: The Age of Impotence and the Horizon of Possibility. London: Verso, 2019."
   },
   {
-    "id": "valid_id_two",
-    "title": "title_two",
-    "description": "description_two",
-    "content": "text_two",
-    "reference": "link_two"
+    "id": "02",
+    "title": "Storia dei cacciatori",
+    "content": "Three brothers (runs a story from the Middle East told among Khirgiz, Tartars, Jews, Turks, and so on) meet a man who has lost a camel (or sometimes it is a horse). At once they describe it to him: it's white, and blind in one eye; under the saddle it carries two skins, one full of oil, the other of wine. They must have seen it? No, they haven't seen it. So they're accused of theft and brought to be judged. How could they know so much about the animal unless they had seen it? And if they had seen it but denied it, they must have stolen it. Their impossible knowledge appears to be evidence of guilt. There follows the triumph of the brothers: they immediately show how, from the barest traces they were able to reconstruct the appearance of an animal they'd never set eyes on.",
+    "reference": "Ginzburg, Carlo. \"Clues: Roots of an Evidential Paradigm.\" In Clues, Myths, and the Historical Method. Baltimore: Johns Hopkins University Press, 1989."
   }
 ]

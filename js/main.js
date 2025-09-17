@@ -85,14 +85,14 @@ function createCube(article) {
     container.style.left = position.left;
     container.onclick = () => openModal(article);
 
-    const shortDescription = article.description.length > 25 ? 
-        article.description.substring(0, 22) + '...' : 
-        article.description;
+    const shortTitle = article.title.length > 25 ? 
+        article.title.substring(0, 22) + '...' : 
+        article.title;
 
     container.innerHTML = `
         <div class="cube">
-            <div class="cube-face front">${shortDescription}</div>
-            <div class="cube-face back">${article.title}</div>
+            <div class="cube-face front">${shortTitle}</div>
+            <div class="cube-face back">${shortTitle}</div>
             <div class="cube-face right"></div>
             <div class="cube-face left"></div>
             <div class="cube-face top"></div>
@@ -157,9 +157,8 @@ function openModal(article) {
     
     content.innerHTML = `
         <h2>${article.title}</h2>
-        <p><strong>Description:</strong> ${article.description}</p>
         <div>${article.content}</div>
-        ${article.reference ? `<p><a href="${article.reference}" target="_blank">Reference Link</a></p>` : ''}
+        ${article.reference ? `<p class="reference-quote">${article.reference}</p>` : ''}
     `;
     
     modal.style.display = 'flex';

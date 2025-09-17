@@ -78,12 +78,12 @@
 .top { transform: rotateX(90deg) translateZ(70px); }
 .bottom { transform: rotateX(-90deg) translateZ(70px); }
 
-.color-black .front { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
-.color-black .back { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
-.color-black .left { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
-.color-black .right { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
-.color-black .top { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
-.color-black .bottom { background: #000000; color: white; font-weight: 700; border: 2px solid white; }
+.color-black .front { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.color-black .back { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.color-black .left { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.color-black .right { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.color-black .top { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
+.color-black .bottom { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

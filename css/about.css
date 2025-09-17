@@ -106,10 +106,10 @@ body, html {
 /* Responsive adjustments for content */
 @media (max-width: 768px) {
     .background-svg {
-        background-image: url('../img/mobile.jpg');
+        background-image: url('../img/mobile.png');
         background-attachment: scroll;
-        background-size: contain;
-        background-position: top center;
+        background-size: cover;
+        background-position: center center;
         background-repeat: no-repeat;
     }
     
