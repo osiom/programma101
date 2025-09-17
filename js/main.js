@@ -6,7 +6,7 @@ let activeCubes = [];
 let currentArticleIndex = 0;
 
 function generateSafePositions() {
-    const cubeSize = window.innerWidth < 768 ? 70 : 140; // Smaller cubes on mobile
+    const cubeSize = window.innerWidth < 768 ? 90 : 140; // Smaller cubes on mobile
     const margin = 20; // Keep cubes away from edges
     
     const positions = [];
@@ -85,9 +85,18 @@ function createCube(article) {
     container.style.left = position.left;
     container.onclick = () => openModal(article);
 
-    const shortTitle = article.title.length > 25 ? 
-        article.title.substring(0, 22) + '...' : 
-        article.title;
+    // Get the title for the cube
+    let shortTitle = article.title;
+    
+    // For longer titles, add a class to make the text smaller
+    if (article.title.length > 20) {
+        container.classList.add('small-text');
+    }
+    
+    // If very long title, add extra-small class
+    if (article.title.length > 35) {
+        container.classList.add('extra-small-text');
+    }
 
     container.innerHTML = `
         <div class="cube">
@@ -105,7 +114,7 @@ function createCube(article) {
 
     const removeTimeout = setTimeout(() => {
         removeCube(container);
-    }, 10000);
+    }, 15000); // Increased from 10 to 15 seconds
 
     activeCubes.push({
         element: container,
@@ -134,7 +143,7 @@ function removeCube(container) {
 
 function showNextCube() {
     if (articles.length === 0) return;
-    if (activeCubes.length >= 3) return;
+    if (activeCubes.length >= 5) return; // Increased maximum from 3 to 5 cubes
 
     const article = articles[currentArticleIndex % articles.length];
     currentArticleIndex++;
