@@ -7,7 +7,7 @@ body, html {
 
 .about-title {
     position: relative;
-    top: 10%; /* Standardized with archive-title */
+    top: -20px; /* Moved another 50px higher from previous 30px */
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -23,7 +23,7 @@ body, html {
 }
 
 .about-container {
-    padding: 80px 40px 0 40px;
+    padding: 130px 40px 0 40px; /* Increased top padding to avoid overlap with title */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -36,10 +36,10 @@ body, html {
     z-index: 100;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 40px 120px 40px; /* Standardized with archive */
-    height: calc(100vh - 120px); /* Fit within viewport */
+    padding: 40px 40px 60px 40px; /* Reduced top padding */
+    height: calc(100vh - 60px); /* Adjusted height to fit better */
     display: flex;
-    align-items: center; /* Center content vertically */
+    align-items: flex-start; /* Align at top instead of center */
 }
 
 /* Text content styling */
@@ -114,13 +114,13 @@ body, html {
     }
     
     .about-title {
-        top: 5%; /* Consistent positioning on mobile */
+        top: -30px; /* Moved another 50px higher from previous 20px */
         font-size: 40px;
         letter-spacing: 3px;
     }
     
     .about-container {
-        padding: 60px 20px 0 20px;
+        padding: 110px 20px 0 20px; /* Increased top padding for mobile */
     }
     
     .content-container {

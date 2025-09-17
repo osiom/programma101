@@ -3,11 +3,12 @@ body, html {
     overflow: visible !important; /* Override the base.css rule */
     overflow-x: hidden; /* Still prevent horizontal scroll */
     overflow-y: auto; /* Allow vertical scroll */
+    min-height: 100vh; /* Ensure full viewport height */
 }
 
 .archive-title {
     position: relative;
-    top: 10%; /* Standardized with about-title */
+    top: -20px; /* Moved another 50px higher from previous 30px */
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -23,11 +24,12 @@ body, html {
 }
 
 .archive-container {
-    padding: 80px 40px 0 40px;
+    padding: 130px 40px 100px 40px; /* Added bottom padding to show full content */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 50;
+    min-height: calc(100vh - 150px); /* Ensure container takes most of viewport height */
 }
 
 .archive-table {
@@ -39,7 +41,8 @@ body, html {
         0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 20px 60px rgba(0, 0, 0, 0.3);
-    margin-top: 100px; /* Standardized with about content */
+    margin-top: 40px; /* Reduced spacing to match about page */
+    margin-bottom: 60px; /* Add margin at bottom to prevent overlap with navigation */
 }
 
 .view-full-btn {
@@ -139,17 +142,18 @@ body, html {
     }
     
     .archive-title {
-        top: 5%; /* Consistent positioning on mobile */
+        top: -30px; /* Moved another 50px higher from previous 20px */
         font-size: 40px;
         letter-spacing: 3px;
     }
     
     .archive-container {
-        padding: 60px 20px 0 20px;
+        padding: 110px 20px 100px 20px; /* Added bottom padding for mobile */
+        min-height: calc(100vh - 100px); /* Ensure container takes most of viewport height on mobile */
     }
     
     .archive-table {
-        margin-top: 80px;
+        margin-top: 30px;
         padding: 20px;
         overflow-x: auto;
     }

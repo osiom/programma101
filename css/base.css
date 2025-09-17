@@ -11,7 +11,7 @@ body, html {
     overflow: hidden; /* Disable scrolling */
     font-family: 'Intel One Mono', monospace;
     font-weight: 500; /* Medium weight for general text */
-    text-transform: lowercase; /* All text lowercase by default */
+    /* Removed text-transform: lowercase to allow normal capitalization */
     position: relative;
     background-color: #ffffff; /* Vintage cream background */
 }
@@ -22,34 +22,40 @@ h1 {
     text-transform: uppercase;
 }
 
-/* Top center logo with semi-transparent grey background */
-.top-logo-container {
+/* Direct logo styling - consistent for all pages */
+.logo-link {
     position: fixed;
-    top: 15px;
+    top: 0px; /* Positioned at the very top edge */
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    background: rgba(128, 128, 128); /* Semi-transparent grey */
-    padding: 10px 15px;
-    border-radius: 4px;
-    backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
-}
-
-.top-logo {
-    height: 25px; /* Adjust size as needed */
-    width: auto;
-    display: block;
-    opacity: 1; /* Ensure the white logo is fully visible */
-}
-
-/* Logo link styling */
-.top-logo-container a {
-    display: block;
+    display: flex; /* Better for centering and alignment */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0; /* Ensure no additional padding is applied */
+    margin: 0; /* Ensure no margins are applied */
     transition: opacity 0.3s ease;
 }
 
-.top-logo-container a:hover {
+.logo-link:hover {
     opacity: 0.8;
+}
+
+.top-logo {
+    height: 50px; /* Consistent height for all logos */
+    width: auto;
+    display: block;
+    opacity: 1; /* Ensure the logo is fully visible */
+    object-fit: contain; /* Ensure the image fits within bounds */
+    max-width: 90vw; /* Prevent from being too wide on mobile */
+}
+
+/* Special styling for the index page logo - same size as other pages */
+.index-logo {
+    height: 50px; /* Same height as other logos */
+    width: auto; /* Let width adjust based on height to maintain aspect ratio */
+    object-fit: contain; /* Ensure proper fitting */
+    transform: none; /* No transformation needed */
 }
 
 .background-svg {
