@@ -50,12 +50,13 @@ h1 {
     max-width: 90vw; /* Prevent from being too wide on mobile */
 }
 
-/* Special styling for the index page logo - same size as other pages */
+/* Special styling for the index page logo - reduced by 35% total (15% + additional 20%) */
 .index-logo {
-    height: 50px; /* Same height as other logos */
+    height: 34px; /* Reduced by additional 20% from 42.5px (total reduction: 35% from original 50px) */
     width: auto; /* Let width adjust based on height to maintain aspect ratio */
     object-fit: contain; /* Ensure proper fitting */
     transform: none; /* No transformation needed */
+    margin-top: 5px; /* Adjusted margin to position logo another 5px higher */
 }
 
 .background-svg {

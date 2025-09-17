@@ -8,7 +8,7 @@ body, html {
 
 .archive-title {
     position: relative;
-    top: -20px; /* Moved another 50px higher from previous 30px */
+    top: -20px; /* Keep consistent with about title */
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -24,7 +24,7 @@ body, html {
 }
 
 .archive-container {
-    padding: 130px 40px 100px 40px; /* Added bottom padding to show full content */
+    padding: 90px 40px 100px 40px; /* Match about-container padding */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -148,7 +148,7 @@ body, html {
     }
     
     .archive-container {
-        padding: 110px 20px 100px 20px; /* Added bottom padding for mobile */
+        padding: 110px 20px 100px 20px; /* Keep mobile padding consistent */
         min-height: calc(100vh - 100px); /* Ensure container takes most of viewport height on mobile */
     }
     

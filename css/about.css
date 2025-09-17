@@ -23,29 +23,20 @@ body, html {
 }
 
 .about-container {
-    padding: 130px 40px 0 40px; /* Increased top padding to avoid overlap with title */
+    padding: 90px 40px 0 40px; /* Adjusted top padding to match archive */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 50;
+    min-height: calc(100vh - 150px); /* Match archive container */
 }
 
-/* Main content container */
-.content-container {
-    position: relative;
-    z-index: 100;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 40px 60px 40px; /* Reduced top padding */
-    height: calc(100vh - 60px); /* Adjusted height to fit better */
-    display: flex;
-    align-items: flex-start; /* Align at top instead of center */
-}
+/* This container is now removed from HTML structure */
 
 /* Text content styling */
 .content-text {
     background: rgba(218, 218, 218, 0.95); /* Slightly more transparent */
-    padding: 10px 60px; /* Increased horizontal padding */
+    padding: 30px 60px; /* Match archive table padding */
     border-radius: 12px;
     box-shadow: 
         0 0 0 3px #333333,
@@ -60,6 +51,8 @@ body, html {
     width: 100%;
     max-height: 70vh; /* Limit height */
     overflow-y: auto; /* Add scroll if needed */
+    margin-top: 40px; /* Match archive table margin-top */
+    margin-bottom: 60px; /* Match archive table margin-bottom */
 }
 
 .content-text h1 {
@@ -120,18 +113,15 @@ body, html {
     }
     
     .about-container {
-        padding: 110px 20px 0 20px; /* Increased top padding for mobile */
+        padding: 110px 20px 100px 20px; /* Match archive container mobile padding */
+        min-height: calc(100vh - 100px); /* Match archive container mobile height */
     }
     
-    .content-container {
-        padding: 80px 20px 100px 20px;
-        max-width: 100%;
-        height: auto;
-        min-height: calc(100vh - 200px);
-    }
+    /* Content container no longer exists */
     
     .content-text {
-        padding: 30px 25px;
+        padding: 20px 25px; /* Match archive table mobile padding */
+        margin-top: 30px; /* Match archive table mobile margin */
         max-height: none;
         overflow-y: visible;
     }
