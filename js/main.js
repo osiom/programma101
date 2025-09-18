@@ -114,7 +114,7 @@ function createCube(article) {
 
     const removeTimeout = setTimeout(() => {
         removeCube(container);
-    }, 15000); // Increased from 10 to 15 seconds
+    }, 20000); // Increased from 15 to 20 seconds
 
     activeCubes.push({
         element: container,
@@ -164,9 +164,12 @@ function openModal(article) {
     const modal = document.getElementById('articleModal');
     const content = document.getElementById('modalContent');
     
+    // Format content by splitting into paragraphs at sentences
+    const formattedContent = formatContentIntoParagraphs(article.content);
+    
     content.innerHTML = `
         <h2>${article.title}</h2>
-        <div>${article.content}</div>
+        <div class="article-content">${formattedContent}</div>
         ${article.reference ? `<p class="reference-quote">${article.reference}</p>` : ''}
     `;
     
@@ -213,4 +216,67 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// Function to split content into paragraphs for better readability
+function formatContentIntoParagraphs(content) {
+    // If content is empty, return empty string
+    if (!content) return '';
+    
+    // First, let's handle special cases that we don't want to split
+    // Replace periods in IDs and preserve special sequences like [...]
+    const preservedContent = content
+        .replace(/(\b[A-Za-z]+)\.(\d+\b)/g, "$1##DOT##$2") // Replace periods in IDs
+        .replace(/(\[\.\.\.\])/g, "##ELLIPSIS##") // Preserve [...] notation
+        .replace(/(\[\.{3}\])/g, "##ELLIPSIS##") // Also match [...]
+        .replace(/(\b[A-Za-z]+\d+\b)/g, "$1"); // Keep IDs intact
+    
+    // Check for quote marks at the beginning
+    const hasQuoteStart = preservedContent.startsWith('"');
+    
+    // Split text into sentences that end with periods, question marks, or exclamation points
+    // followed by a space or end of string, being careful not to split at ID numbers
+    const regex = /[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g;
+    const sentences = preservedContent.match(regex) || [preservedContent];
+    
+    // Group sentences into paragraphs (approximately 2-3 sentences per paragraph)
+    const paragraphs = [];
+    let currentParagraph = '';
+    let sentenceCount = 0;
+    
+    sentences.forEach((sentence, index) => {
+        // Restore any replaced periods in IDs and special notations
+        const restoredSentence = sentence
+            .replace(/##DOT##/g, ".") // Restore periods in IDs
+            .replace(/##ELLIPSIS##/g, "[...]"); // Restore [...] notation
+        
+        // If it's a quoted section, keep it together
+        if (hasQuoteStart && restoredSentence.includes('"')) {
+            if (currentParagraph) {
+                paragraphs.push(currentParagraph);
+                currentParagraph = restoredSentence.trim();
+            } else {
+                currentParagraph = restoredSentence.trim();
+            }
+        } else {
+            // Add to current paragraph
+            currentParagraph += restoredSentence;
+            sentenceCount++;
+            
+            // Create a new paragraph every 2-3 sentences or at the end
+            if (sentenceCount >= 3 || index === sentences.length - 1) {
+                paragraphs.push(currentParagraph.trim());
+                currentParagraph = '';
+                sentenceCount = 0;
+            }
+        }
+    });
+    
+    // If there's anything left in currentParagraph, add it
+    if (currentParagraph) {
+        paragraphs.push(currentParagraph.trim());
+    }
+    
+    // Join paragraphs with HTML paragraph tags
+    return paragraphs.map(p => `<p>${p}</p>`).join('');
 }

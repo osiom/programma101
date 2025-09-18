@@ -163,11 +163,29 @@ h1 {
         0 0 0 6px #ffffff,
         0 0 0 9px #666666,
         0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: justify; /* Justify text for better readability */
+    line-height: 1.5; /* Improve line spacing */
+}
+
+/* Modal content paragraphs */
+.modal-content p {
+    margin-bottom: 16px;
 }
 
 .modal h2 {
     margin-top: 0;
     color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Styling for article content in modals */
+.article-content {
+    text-align: justify;
+}
+
+.article-content p {
+    margin-bottom: 16px;
+    line-height: 1.6;
 }
 
 .reference-quote {
