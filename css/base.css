@@ -214,6 +214,38 @@ h1 {
         background-position: center center;
         background-repeat: no-repeat;
     }
+    
+    /* Mobile modal styling */
+    .modal-content {
+        padding: 25px;
+        max-width: 95%;
+    }
+    
+    .modal h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .article-content {
+        text-align: justify;
+        font-size: 14px;
+    }
+    
+    .article-content p {
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+    
+    .reference-quote {
+        font-size: 0.85em;
+        margin-top: 20px;
+        padding-top: 12px;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 15px;
+    }
 }
 
 /* Tablets */
