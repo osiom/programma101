@@ -223,6 +223,15 @@ function formatContentIntoParagraphs(content) {
     // If content is empty, return empty string
     if (!content) return '';
     
+    // Check if content contains HTML tags - if so, don't process further
+    if (/<[a-z][\s\S]*>/i.test(content)) {
+        // Already has HTML, wrap in paragraph if needed
+        if (!content.includes('<p>') && !content.includes('<div>')) {
+            return `<p>${content}</p>`;
+        }
+        return content; // Return content with HTML tags intact
+    }
+    
     // First, let's handle special cases that we don't want to split
     // Replace periods in IDs and preserve special sequences like [...]
     const preservedContent = content
@@ -232,7 +241,7 @@ function formatContentIntoParagraphs(content) {
         .replace(/(\b[A-Za-z]+\d+\b)/g, "$1"); // Keep IDs intact
     
     // Check for quote marks at the beginning
-    const hasQuoteStart = preservedContent.startsWith('"');
+    const hasQuoteStart = preservedContent.startsWith('\'');
     
     // Split text into sentences that end with periods, question marks, or exclamation points
     // followed by a space or end of string, being careful not to split at ID numbers
@@ -251,7 +260,7 @@ function formatContentIntoParagraphs(content) {
             .replace(/##ELLIPSIS##/g, "[...]"); // Restore [...] notation
         
         // If it's a quoted section, keep it together
-        if (hasQuoteStart && restoredSentence.includes('"')) {
+        if (hasQuoteStart && restoredSentence.includes('\'')) {
             if (currentParagraph) {
                 paragraphs.push(currentParagraph);
                 currentParagraph = restoredSentence.trim();
