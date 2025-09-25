@@ -206,7 +206,48 @@ h1 {
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* Lenovo Tab M10 Plus 3rd Gen optimization */
+@media (min-width: 601px) and (max-width: 768px) {
+    .background-svg {
+        background-position: center center;
+    }
+    
+    /* Bottom menu optimized for tablet */
+    .bottom-menu {
+        padding: 12px 20px;
+        bottom: 20px;
+    }
+    
+    .bottom-menu nav {
+        gap: 20px;
+    }
+    
+    .bottom-menu a {
+        font-size: 13px;
+    }
+    
+    /* Modal adjustments */
+    .modal-content {
+        max-width: 85%;
+        padding: 25px;
+    }
+    
+    .modal h2 {
+        font-size: 20px;
+    }
+    
+    /* Logo adjustments */
+    .top-logo {
+        height: 40px;
+    }
+    
+    .index-logo {
+        height: 30px;
+    }
+}
+
+/* Mobile phone sizes */
+@media (max-width: 600px) {
     .background-svg {
         background-image: url('../img/mobile.png');
         background-attachment: scroll;
@@ -252,6 +293,30 @@ h1 {
 @media (min-width: 769px) and (max-width: 1024px) {
     .background-svg {
         background-position: center center;
+    }
+    
+    /* Bottom menu adjustments for tablets */
+    .bottom-menu {
+        padding: 12px 25px;
+    }
+    
+    .bottom-menu nav {
+        gap: 25px;
+    }
+    
+    /* Modal adjustments for tablets */
+    .modal-content {
+        max-width: 90%;
+        padding: 30px;
+    }
+    
+    /* Logo adjustments for tablets */
+    .top-logo {
+        height: 45px;
+    }
+    
+    .index-logo {
+        height: 32px;
     }
 }
 

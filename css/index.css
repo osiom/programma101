@@ -120,7 +120,45 @@
 .color-black .bottom { background: rgb(30,30,30); color: white; font-weight: 700; border: 1.5px solid rgba(255, 255, 255, 0.85); }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+/* Lenovo Tab M10 Plus 3rd Gen optimization */
+@media (min-width: 601px) and (max-width: 768px) {
+    .main-title {
+        font-size: 65px;
+        letter-spacing: 6px;
+    }
+    
+    /* Adjust cube for tablet */
+    .cube {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .cube-face {
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    .small-text .cube-face {
+        font-size: 10px;
+    }
+    
+    .extra-small-text .cube-face {
+        font-size: 9px;
+    }
+    
+    /* Adjust cube transforms for tablet */
+    .front { transform: translateZ(50px); }
+    .back { transform: rotateY(180deg) translateZ(50px); }
+    .right { transform: rotateY(90deg) translateZ(50px); }
+    .left { transform: rotateY(-90deg) translateZ(50px); }
+    .top { transform: rotateX(90deg) translateZ(50px); }
+    .bottom { transform: rotateX(-90deg) translateZ(50px); }
+}
+
+/* Mobile phone sizes */
+@media (max-width: 600px) {
     .main-title {
         font-size: 60px;
         letter-spacing: 4px;

@@ -97,7 +97,31 @@ body, html {
 }
 
 /* Responsive adjustments for content */
-@media (max-width: 768px) {
+/* Lenovo Tab M10 Plus 3rd Gen optimization */
+@media (min-width: 601px) and (max-width: 768px) {
+    .about-title {
+        top: -25px;
+        font-size: 45px;
+        letter-spacing: 4px;
+    }
+    
+    .about-container {
+        padding: 100px 30px 80px 30px;
+    }
+    
+    .content-text {
+        padding: 25px 40px;
+        margin-top: 35px;
+        margin-bottom: 50px;
+    }
+    
+    .content-text h1 {
+        font-size: 22px;
+    }
+}
+
+/* Mobile phone sizes */
+@media (max-width: 600px) {
     .background-svg {
         background-image: url('../img/mobile.png');
         background-attachment: scroll;
