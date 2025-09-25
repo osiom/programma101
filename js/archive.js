@@ -149,24 +149,31 @@ function formatContentIntoParagraphs(content) {
     // If content is empty, return empty string
     if (!content) return '';
     
-    // For article with HTML, ensure proper handling of tags
-    if (content.includes('<b>')) {
-        // Replace newlines with paragraph breaks first
-        let formattedContent = content.replace(/\n/g, '</p><p>');
+    // For article with HTML tags or special formatting
+    if (content.includes('<b>') || content.includes('<i>') || content.includes("factory's")) {
+        // First, preprocess the text to mark known sentence boundaries
+        let preprocessed = content
+            // Mark sentence boundaries
+            .replace(/\?\s+/g, '?<SENTENCE_BREAK>')
+            .replace(/!\s+/g, '!<SENTENCE_BREAK>')
+            .replace(/\.\s+(?=[A-Z])/g, '.<SENTENCE_BREAK>');
         
-        // Create paragraphs by splitting at each sentence ending
-        formattedContent = formattedContent.replace(/([.!?])\s+/g, '$1</p><p>');
+        // Don't split in the middle of possessives and quotes
+        preprocessed = preprocessed
+            .replace(/\.\s*'\s*(?![A-Z])/g, ".") // Fix quotes not followed by capital letters
+            .replace(/factory's/g, "factory<APOSTROPHE>s")
+            .replace(/perhaps:/g, "perhaps<COLON>");
+        
+        // Convert to paragraphs
+        let formattedContent = '<p>' + preprocessed.split('<SENTENCE_BREAK>').join('</p><p>') + '</p>';
+        
+        // Restore special characters
+        formattedContent = formattedContent
+            .replace(/<APOSTROPHE>/g, "'")
+            .replace(/<COLON>/g, ":");
         
         // Clean up any empty paragraphs
         formattedContent = formattedContent.replace(/<p>\s*<\/p>/g, '');
-        
-        // Ensure the content starts and ends with paragraph tags
-        if (!formattedContent.startsWith('<p>')) {
-            formattedContent = '<p>' + formattedContent;
-        }
-        if (!formattedContent.endsWith('</p>')) {
-            formattedContent += '</p>';
-        }
         
         return formattedContent;
     }
