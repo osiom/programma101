@@ -3,22 +3,22 @@
     
   "id": "01",
   "title": "In me non c'è che futuro.",
-  "content": "\"All there is in me is the future.\" It is a statement that many have attributed to Adriano Olivetti to emphasize his proverbial impatience, his constant movement, and his habit of always being in the car.\n\nWhat futurability is still to be uncovered in this story? Another digital society was possible, but then it ceased to seem possible. In between: the occult and non-occult intervention of certain powers at play in Italy and Europe.\n\nFranco Berardi: \"Power is the selection and imposition of one possibility among many, and at the same time, it is the exclusion (and invisibilization) of many other possibilities.\"",
+  "content": "'*All there is in me is the future.*' It is a statement that many have attributed to Adriano Olivetti to emphasize his proverbial impatience, his constant movement, and his habit of always being in the car.\n\nWhat futurability is still to be uncovered in this story? Another digital society was possible, but then it ceased to seem possible. In between: the occult and non-occult intervention of certain powers at play in Italy and Europe.\n\nFranco Berardi: '*Power is the selection and imposition of one possibility among many, and at the same time, it is the exclusion (and invisibilization) of many other possibilities.*'",
   "reference": "Berardi, Franco \"Bifo.\" Futurability: The Age of Impotence and the Horizon of Possibility. London: Verso, 2019."
 
   },
+{
+  "id": "02",
+  "title": "A Hunter Story.",
+  "content": "'*Three brothers (runs a story from the Middle East told among Khirgiz, Tartars, Jews, Turks, and so on) meet a man who has lost a camel (or sometimes it is a horse). At once they describe it to him: it's white, and blind in one eye; under the saddle it carries two skins, one full of oil, the other of wine. They must have seen it? No, they haven't seen it. So they're accused of theft and brought to be judged.*'\n\nHow could they know so much about the animal unless they had seen it? And if they had seen it but denied it, they must have stolen it. Their impossible knowledge appears to be evidence of guilt.\n\n '*There follows the triumph of the brothers: they immediately show how, from the barest traces they were able to reconstruct the appearance of an animal they'd never set eyes on.*'",
+  "reference": "Ginzburg, Carlo, and Anna Davin. \"Morelli, Freud and Sherlock Holmes: Clues and Scientific Method.\" History Workshop, no. 9 (Spring 1980): 5-36."
+},
   {
-    "id": "02",
-    "title": "A Hunter Story.",
-    "content": "Three brothers (runs a story from the middle-east told among khirgiz, tartars, jews, turks, and so on) meet a man who has lost a camel (or sometimes it is a horse). At once they describe it to him: it's white, and blind in one eye; under the saddle it carries two skins, one full of oil, the other of wine. They must have seen it? No, they haven't seen it. So they're accused of theft and brought to be judged. How could they know so much about the animal unless they had seen it? And if they had seen it but denied it, they must have stolen it. Their impossible knowledge appears to be evidence of guilt. There follows the triumph of the brothers: they immediately show how, from the barest traces they were able to reconstruct the appearance of an animal they'd never set eyes on.",
-    "reference": "Ginzburg, Carlo. 'clues: roots of an evidential paradigm.' in clues, myths, and the historical method. baltimore: Johns Hopkins University press, 1989."
-  },
-  {
-    "id": "03",
-    "title": "The Modernist Revolution.",
-    "content": "[...] Memory, however, gives voice primarily to those who, as if present, still have something to tell us. I don't know whether it reveals absolute truths; rather, it brings back to center stage those nascent ideas of the future that belonged to a fast-paced, electric time dense with promises—as the full twentieth century was, at least in Olivetti's experience... One is tempted to use those traces from yesterday, perhaps even to contradict them in light of hindsight. To revive, if not those answers—brief hopes that aged too quickly—then at least the questions, which remain utterly contemporary, that those times and those exceptional protagonists knew how to pose. Beyond the opaque horizon of a present that—caught between the despotism of the virtual and the pathologies of individualism—has betrayed, at least in its founding premises, the virtues of the modernist revolution.",
-    "reference": "Tarpino, Antonella. Memoria imperfetta: La comunità Olivetti e il mondo nuovo. Turin: Einaudi, 2020."
-  },
+  "id": "03",
+  "title": "The Modernist Revolution.",
+  "content": "[...] Memory, however, gives voice primarily to those who, as if present, still have something to tell us. I don't know whether it reveals absolute truths; rather, it brings back to center stage those nascent ideas of the future that belonged to a fast-paced, electric time dense with promises—as the full twentieth century was, at least in Olivetti's experience...\n\nOne is tempted to use those traces from yesterday, perhaps even to contradict them in light of hindsight. To revive, if not those answers—brief hopes that aged too quickly—then at least the questions, which remain utterly contemporary, that those times and those exceptional protagonists knew how to pose. Beyond the opaque horizon of a present that—caught between the despotism of the virtual and the pathologies of individualism—has betrayed, at least in its founding premises, the virtues of the modernist revolution.",
+  "reference": "Tarpino, Antonella. Memoria imperfetta: La comunità Olivetti e il mondo nuovo. Turin: Einaudi, 2020."
+},
   {
     "id": "04",
     "title": "To imagine all that is unknown or left unspoken.",
