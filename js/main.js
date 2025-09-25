@@ -223,13 +223,26 @@ function formatContentIntoParagraphs(content) {
     // If content is empty, return empty string
     if (!content) return '';
     
-    // Check if content contains HTML tags - if so, don't process further
-    if (/<[a-z][\s\S]*>/i.test(content)) {
-        // Already has HTML, wrap in paragraph if needed
-        if (!content.includes('<p>') && !content.includes('<div>')) {
-            return `<p>${content}</p>`;
+    // For article with HTML, ensure proper handling of tags
+    if (content.includes('<b>')) {
+        // Replace newlines with paragraph breaks first
+        let formattedContent = content.replace(/\n/g, '</p><p>');
+        
+        // Create paragraphs by splitting at each sentence ending
+        formattedContent = formattedContent.replace(/([.!?])\s+/g, '$1</p><p>');
+        
+        // Clean up any empty paragraphs
+        formattedContent = formattedContent.replace(/<p>\s*<\/p>/g, '');
+        
+        // Ensure the content starts and ends with paragraph tags
+        if (!formattedContent.startsWith('<p>')) {
+            formattedContent = '<p>' + formattedContent;
         }
-        return content; // Return content with HTML tags intact
+        if (!formattedContent.endsWith('</p>')) {
+            formattedContent += '</p>';
+        }
+        
+        return formattedContent;
     }
     
     // First, let's handle special cases that we don't want to split
@@ -240,51 +253,19 @@ function formatContentIntoParagraphs(content) {
         .replace(/(\[\.{3}\])/g, "##ELLIPSIS##") // Also match [...]
         .replace(/(\b[A-Za-z]+\d+\b)/g, "$1"); // Keep IDs intact
     
-    // Check for quote marks at the beginning
-    const hasQuoteStart = preservedContent.startsWith('\'');
-    
     // Split text into sentences that end with periods, question marks, or exclamation points
     // followed by a space or end of string, being careful not to split at ID numbers
     const regex = /[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g;
     const sentences = preservedContent.match(regex) || [preservedContent];
     
-    // Group sentences into paragraphs (approximately 2-3 sentences per paragraph)
-    const paragraphs = [];
-    let currentParagraph = '';
-    let sentenceCount = 0;
-    
-    sentences.forEach((sentence, index) => {
+    // Create a paragraph for each sentence
+    const paragraphs = sentences.map(sentence => {
         // Restore any replaced periods in IDs and special notations
-        const restoredSentence = sentence
+        return sentence
             .replace(/##DOT##/g, ".") // Restore periods in IDs
-            .replace(/##ELLIPSIS##/g, "[...]"); // Restore [...] notation
-        
-        // If it's a quoted section, keep it together
-        if (hasQuoteStart && restoredSentence.includes('\'')) {
-            if (currentParagraph) {
-                paragraphs.push(currentParagraph);
-                currentParagraph = restoredSentence.trim();
-            } else {
-                currentParagraph = restoredSentence.trim();
-            }
-        } else {
-            // Add to current paragraph
-            currentParagraph += restoredSentence;
-            sentenceCount++;
-            
-            // Create a new paragraph every 2-3 sentences or at the end
-            if (sentenceCount >= 3 || index === sentences.length - 1) {
-                paragraphs.push(currentParagraph.trim());
-                currentParagraph = '';
-                sentenceCount = 0;
-            }
-        }
+            .replace(/##ELLIPSIS##/g, "[...]") // Restore [...] notation
+            .trim();
     });
-    
-    // If there's anything left in currentParagraph, add it
-    if (currentParagraph) {
-        paragraphs.push(currentParagraph.trim());
-    }
     
     // Join paragraphs with HTML paragraph tags
     return paragraphs.map(p => `<p>${p}</p>`).join('');
