@@ -41,7 +41,7 @@
   },
   {
     "id": "07",
-    "title": "Olivetti-Underwood Factory (Harrisburg, PA, USA,)",
+    "title": "Olivetti-Underwood Factory (Harrisburg, PA, USA)",
     "content": "It was a watershed moment, the first time an Italian company had taken over an American company. In the autumn of 1959, the U.S. government immediately slapped the new Olivetti-Underwood merger with an antitrust suit, an indication that, somewhere, the development was being viewed with alarm and that it had to be stopped. While the suit was continuing, Olivetti began to make good on the payments: three installments, two by the end of 1959 and the third in February 1960, which may have closely coincided with the date of his death. Also, seemingly by coincidence, the new Olivetti Underwood company was about to make its debut on the Milan bourse the first week of March 1960 and Adriano was making final arrangements for that the day he died.",
     "reference": "Secrest, Meryle. The Mysterious Affair at Olivetti: IBM, the CIA, and the Cold War Conspiracy to Shut Down Production of the World's First Desktop Computer. New York: Knopf, 2019."
   },
@@ -66,14 +66,22 @@
    {
     "id": "11",
     "title": "Mind and Machine",
-    "content": "The true torment of these industrial humanists imposes the same question on both Volponi and Ottieri: how much does the mind participate in the worker's labor? And, more importantly, to what extent is it beneficial that it should? Factory life, Albino Saluggia explains in Memoriale: <i>'It pushes things somewhat away from us, drives them almost to the back of the mind, which no longer follows the work and all the other events step by step; instead it remains above, free to pursue thoughts that have little connection to what is happening.'</i>",
+    "content": "The true torment of these industrial humanists imposes the same question on both Volponi and Ottieri: how much does the mind participate in the worker's labor? And, more importantly, to what extent is it beneficial that it should? Factory life, Albino Saluggia explains in Memoriale: 'It pushes things somewhat away from us, drives them almost to the back of the mind, which no longer follows the work and all the other events step by step; instead it remains above, free to pursue thoughts that have little connection to what is happening.'",
     "reference": "Tarpino, Antonella. Memoria imperfetta: La comunità Olivetti e il mondo nuovo. Turin: Einaudi, 2020."
   },
    {
     "id": "12",
     "title": "Computational Anxiety",
-    "content": "What became of this New that was intended to ease, at least partially, the direct opposition between machines and human labor? The computer system soon seized control of the factory's strategic center, rendering the various Islands completely obsolete and displacing the cognitive capacity that workers had developed around their own work. Thus, computerized industrial work appears perhaps: <i>'more anxious, absurd, and elusive than the previous work it has replaced, transformed, or completely erased [...] the computer does not lighten the burden because it still commands from above.'</i>",
+    "content": "What became of this New that was intended to ease, at least partially, the direct opposition between machines and human labor? The computer system soon seized control of the factory's strategic center, rendering the various Islands completely obsolete and displacing the cognitive capacity that workers had developed around their own work. Thus, computerized industrial work appears perhaps:'more anxious, absurd, and elusive than the previous work it has replaced, transformed, or completely erased [...] the computer does not lighten the burden because it still commands from above.'",
+    "reference": "Tarpino, Antonella. Memoria imperfetta: La comunità Olivetti e il mondo nuovo. Turin: Einaudi, 2020."
+  },
+
+   {
+    "id": "13",
+    "title": "On Relationality",
+    "content": "Relationship, therefore, lies at the center of the overall design field within the communitarian framework of the Olivettian vision: where objects function as true 'relational devices,' capable in turn of modifying behaviors (whether in housing or in the aesthetic appeal of images in general).",
     "reference": "Tarpino, Antonella. Memoria imperfetta: La comunità Olivetti e il mondo nuovo. Turin: Einaudi, 2020."
   }
+  
 
 ]
